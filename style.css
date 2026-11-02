@@ -1,0 +1,109 @@
+/*lehe vormistus fail*/
+@import url('https://fonts.cdnfonts.com/css/minecraft-3');
+/*lehe värvide standart(kui vahetame värvi siin, vahetatakse kogu lehel)*/
+:root {
+    --base-color: #d6d3d3;                       /*tagaplaani värv*/
+    --text-color: #0F172A;                       /*tavateksti värv(paragrafid)*/
+    --heading-color: #2a802a;                    /*pealkirjade värv*/
+    --border-block-color: #e1f3fa;               /*box'i tagaplaani värv*/
+    --default-font: 'Minecraft';
+}
+
+/*kogu lehe paigalduse vahetamine*/
+*{
+    margin: 0;                                     /*reset elementide kaugust teine teisest*/
+    padding: 0;                                    /*reset elementide kaugust nende ümber*/
+    box-sizing: border-box;                        /*arvutab elementide laiuse ja kõrguse koos ääriste ja siseruumiga*/
+}
+
+/*kogu lehe teksti vormistamine*/
+html {
+    font-family: var(--default-font);              /*fonti valimine*/
+    color: var(--text-color);                      /*teksti värvi määramine*/
+    height: 100%;                                  /*teeb, et leht võttis kogu ekraani*/
+}
+
+/*pea teksti vormistus*/
+body{
+    padding: 1em;                                  /*kaugus teistest lehe osadest*/
+    background-color: var(--base-color);           /*pea teksti tagaplaani värvi määramine*/
+
+}
+
+/*üleva asjade vormistus*/
+.nav_lingid {
+    margin: 0em auto 3em auto;                     /*teksti kaugus teistest osadest*/
+    width: min(1000px 100%);                       /*määrab navigeerimisriba minimaalse/maksimaalse laiuse*/
+    display: flex;                                 /*muudab elemendi paindlikuks konteineriks (Flexbox)*/
+    align-items: center;                           /*sõnade paigaldamine keskel*/
+    gap: 2em;                                      /*linkide vahe*/
+    justify-content: flex-end;                     /*paigutab elemendid paremasse äärde*/
+}
+
+/*Kõikide linkide vormistus*/
+a {
+    text-decoration: none;                         /*underline'i eemaldamine*/
+    color: #228fe8;                              /*lingide värv = sinine*/
+}
+
+/*tutorial linkide vormistus*/
+.tutorial a {
+    color: var(--heading-color);                   /*linkide värv = pealkirjade värv*/
+}
+
+/*kursoriga lingile hõljumine*/
+a:hover {
+    text-decoration: underline;                    /*underline'i panemine hõljumise ajal panemine*/
+}
+
+/*h1 pealkiri(tervitus)*/
+h1{
+    margin: 1em auto 2em auto;                     /*teksti kaugus teistest osadest*/
+    text-align: center;                            /*teksti panemine lehe keskel*/
+}
+
+/*h4 pealkiri(nali)*/
+h4{
+    text-align: left;                              /*teksti panemine lehe vasakul*/
+}
+
+/*box ümber linke*/
+.tutorial {
+    border: 2px solid #000000;                   /*box'i seinade paksus ja värv*/
+    padding: 15px 30px;                            /*teksti kaugus seinadest*/
+    display: inline-block;                         /*teeb elemendi plokiks, mis võtab enda alla vaid niipalju ruumi kui sisu nõuab*/
+    border-radius: 10px;                           /*ümardatud nurgad*/
+    background-color: var(--border-block-color);   /*tagaplaani värvi panemine*/
+}
+
+/*box ümber otsingu ja otsingu koht lehel*/
+.otsing {
+    border: 2px solid #000000;                   /*box'i seinade paksus ja värv*/
+    padding: 5px 10px;                             /*teksti kaugus seinadest*/
+    display: inline-block;                         /*teeb elemendi plokiks, mis võtab enda alla vaid niipalju ruumi kui sisu nõuab*/
+    border-radius: 10px;                           /*ümardatud nurgad*/
+    background-color: var(--border-block-color);   /*tagaplaani värvi panemine*/
+    right: 20px;                                   /*otsingu kaugus lehe paremapoolest*/
+    position: fixed;                               /*positsiooni fikseerimine, et see ei liiguks*/
+}
+
+/*teksti lehe all vormistamine*/
+footer {
+    position: fixed;                               /*teksti fikseerimine, et see ei liiguks*/
+    bottom: 20px;                                  /*teksti kaugus lehe alt*/
+    right: 20px;                                   /*teksti kaugus lehe paremapoolest*/
+}
+
+/*Bold teksti vormistus*/
+b {
+    color: green;                                /*värvi panemine roheliseks*/
+}
+
+/*tähtsa teksti vormistus*/
+em {
+    color: darkred;                              /*tähtsa teksti värvimine punaseks*/
+}
+
+input {
+    font-family: var(--default-font);
+}
