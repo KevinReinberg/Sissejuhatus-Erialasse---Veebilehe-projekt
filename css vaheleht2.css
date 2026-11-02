@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url("pildid/Taustapilt.png");
+
+}
+
+.header_taust {
+    background: left / cover
+    url("pildid/kivim.jpg");
+    background-repeat: repeat-x;
+    background-position: top left;
+    background-size: 100px;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    gap: 40px;
+    box-sizing: border-box;
+}
+
+.logo {
+    background-image: url("pildid/ikoon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 60px;
+    width: 60px;
+    flex-shrink: 0; /* Ei lase ikoonil väheneda */
+}
+
+/* keskmine veerg ehk linkide ala, võrdsete vahedega. */
+.nav-ala {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    padding: 5;
+    text-align: center;
+    text-shadow: black 2px 2px 0.2rem;
+    white-space: nowrap;
+}
+
+/* Lehe põhiosa */
+.lehe_sisu {
+    display: flex;
+    min-height: calc(100vh - 100px);
+}
+
+
+/* kylgirba */
+
+.kylgriba {
+    width: 200px;
+    background-image: url("pildid/kivim.jpg");
+    background-size: 100px 100px;
+    background-repeat: repeat;
+    box-sizing: border-box;
+    padding: 30px;
+    flex-shrink: 0;
+}
+
+.kylgriba ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 55px;
+}
+
+.kylgriba li {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.kylg_link {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    padding: 5px;
+    display: block;
+    text-shadow: black 2px 2px 0.2rem;
+    word-break: break-word;
+}
+
+@media (max-width: 768px), (orientation: portrait) {
+    .kylgriba {
+        width: 100px;
+        padding: 20px 5px;
+    }
+
+    .kylg_link {
+        font-size: 16px;
+    }
+}
+/* sisu ala */
+
+.sisu {
+    flex: 1;
+    padding: 20px;
+}
+
