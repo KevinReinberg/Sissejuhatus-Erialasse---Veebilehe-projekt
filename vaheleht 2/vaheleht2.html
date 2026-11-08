@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="et">
+
+<!-- See on siis see p2is-->
+<head>
+<!-- UTF-8 aitab lehekyljel t2pit2hti lugeda-->
+<meta charset="UTF-8">
+<!-- Leht seab lehe laiuseks vaikimisi ekraani laiuse ja esmase suumitaseme 100% peale-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Minecraft Translate </title>
+<link rel="icon" type="image/x-icon" href="pildid/ikoon.png">
+<link rel="stylesheet" href="css vaheleht2.css">
+</head>
+
+<body>
+    <header class="header_taust">
+        <div class="logo"> </div>
+        <nav class="nav-ala">
+            <a class="link" href="#">Koduleht</a>
+            <a class="link" href="#">Tutorial</a>
+        </nav>
+    </header>
+
+<!-- Lehekülje sisu -->
+    <div class="lehe_sisu">
+        <!-- külgriba -->
+        <aside class="kylgriba">
+            <nav>
+                <ul>
+                    <li><a class="kylg_link" href="#">Kalkulaator</a></li>
+                    <li><a class="kylg_link" href="#">Selgitus</a></li>
+                    <li><a class="kylg_link" href="#">Allikad</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="sisu">
+            <h1>Vahemaa kalkulaator</h1>
+
+            <div class="kaart vorm-osa">
+                <form id="kalkulaatorVorm" onsubmit="return false;">
+                    <div class="punktid-rida">
+                        <!-- Punkt A -->
+                        <div class="punktid-tulp">
+                            <h2>Punkt A</h2>
+                            <div class="input-rida">
+                                <input type="number" id="x1" class="mc-input" placeholder="X1" value="0">
+                                <label for="x1">X1:</label>
+                            </div>
+                            <div class="input-rida">
+                                <input type="number" id="y1" class="mc-input" placeholder="Y1" value="64">
+                                <label for="y1">Y1:</label>
+                            </div>
+                            <div class="input-rida">   
+                                <input type="number" id="z1" class="mc-input" placeholder="Z1" value="0">
+                                <label for="z1">Z1:</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Punkt B -->
+                        <div class="punktid-tulp">
+                            <h2>Punkt B</h2>
+                            <div class="input-rida">
+                                <input type="number" id="x2" class="mc-input" placeholder="X2" value="800">
+                                <label for="x2">X2:</label>
+                            </div>
+                            <div class="input-rida">
+                                <input type="number" id="y2" class="mc-input" placeholder="Y2" value="64">
+                                <label for="y2">Y2:</label>
+                            </div>
+                            <div class="input-rida">
+                                <input type="number" id="z2" class="mc-input" placeholder="Z2" value="0">
+                                <label for="z2">Z2:</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nupp-konteiner">
+                        <button type="button" id="arvutaNupp" class="nupp">Arvuta vahemaa</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="kaart tulemused-osa">
+                <h2>Tulemused</h2>
+                <p>Kaugus Overworldis: <span id="overworldKaugus">-</span></p>
+                <p>Kaugus Netheris: <span id="netherKaugus">-</span></p>
+                
+                <p id="netherA">Punkti A Nether portaal: -</p>
+                <p id="netherB">Punkti B Nether portaal: -</p>
+                
+                <p id="kokkuhoidTekst"></p>
+            </div>
+
+            <h2>Selgitus</h2>
+            <p>Vahemaa kalkulaator arvutab kahe punkti vahelise kauguse Minecrafti Overworldis ja Netheris. Sisestage punktide A ja B koordinaadid ning vajutage "Arvuta vahemaa". Kalkulaator kuvab kauguse mõlemas dimensioonis ning näitab, kus asuvad vastavad Netheri portaalid.</p>
+            
+
+        </main>
+
+    <!-- JavaScripti faili kaasa haaramine -->
+    <script src="kalkulaator.js"></script>
+    </div>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url("pildid/Taustapilt.png");
+
+}
+
+.header_taust {
+    background: left / cover
+    url("pildid/kivim.jpg");
+    background-repeat: repeat-x;
+    background-position: top left;
+    background-size: 100px;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    gap: 40px;
+    box-sizing: border-box;
+}
+
+.logo {
+    background-image: url("pildid/ikoon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 60px;
+    width: 60px;
+    flex-shrink: 0; /* Ei lase ikoonil väheneda */
+}
+
+/* keskmine veerg ehk linkide ala, võrdsete vahedega. */
+.nav-ala {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px 24px;
+    text-align: center;
+    white-space: nowrap;
+
+    background-image: url("pildid/nupp.png");
+    background-color: transparent;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;   
+    background-position: center;     
+
+    cursor: pointer;
+    border: none;    
+    border-radius: 0px;
+}
+
+/* Lehe põhiosa */
+.lehe_sisu {
+    display: flex;
+    min-height: calc(100vh - 100px);
+}
+
+
+/* kylgirba */
+
+.kylgriba {
+    width: 200px;
+    background-image: url("pildid/kivim.jpg");
+    background-size: 100px 100px;
+    background-repeat: repeat;
+    box-sizing: border-box;
+    padding: 30px;
+    flex-shrink: 0;
+}
+
+.kylgriba ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 55px;
+}
+
+.kylgriba li {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.kylg_link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 5px;
+    display: block;
+    word-break: break-word;
+
+        background-image: url("pildid/nupp.png");
+    background-color: transparent;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;   
+    background-position: center;     
+
+    cursor: pointer;
+    border: none;    
+    border-radius: 0px;
+}
+
+@media (max-width: 768px), (orientation: portrait) {
+    .kylgriba {
+        width: 100px;
+        padding: 20px 5px;
+    }
+
+    .kylg_link {
+        font-size: 16px;
+    }
+}
+/* sisu ala */
+
+.sisu {
+    flex: 1;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: white;
+    text-align: center;
+
+}
+.nupp {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 24px;
+    font-size: 18px;
+    color: white;
+
+    background-image: url("pildid/nupp.png");
+    background-color: transparent;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;   
+    background-position: center;     
+
+    cursor: pointer;
+    border: none;    
+    border-radius: 0px;
+}
+
+/* Kaartide üldine taust ja paigutus */
+.kaart {
+    /* Asenda 'pilt.png' oma taustapildi teega */
+    background-image: url('pildid/silt.png'); 
+    background-repeat: repeat; /* Tagab, et pilt ei veniks, vaid korduks ühtlaselt */
+    background-size: auto;
+    
+    border: 4px solid #3c3c3c;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    color: #ffffff;
+    box-shadow: inset -4px -4px 0px 0px #1e1e1e, inset 4px 4px 0px 0px #5a5a5a;
+}
+
+
+.punktid-rida {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+}
+
+.punktid-tulp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.punktid-tulp label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: white;
+    margin: 0;
+}
+
+/* Nupu keskele paigutamine */
+.nupp-konteiner {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Input väljade stiil ( Minecrafti nupu vaatega ) */
+.mc-input {
+width: 100%;
+    max-width: 140px; /* Piirab sisendvälja laiust, et see ei veniks üle tulba */
+    padding: 6px 10px; /* Vähendab sisendvälja kõrgust/suurust */
+    font-size: 18px;
+    text-align: center; /* Tekst sisendi sees on keskel */
+
+    background-image: url(pildid/silt.png); 
+    border: 3px solid;
+    border-color: #5c4731 #e5c198 #e5c198 #5c4731;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.mc-input:focus {
+    background-color: #8b8b8b;
+    border-color: #ffffff #000000 #000000 #ffffff;
+}
+
+/* Button stiil */
+.nupp {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #7d7d7d;
+    color: #ffffff;
+    border: 3px solid;
+    border-color: #b4b4b4 #373737 #373737 #b4b4b4;
+    cursor: pointer;
+    text-shadow: 1px 1px #000000;
+}
+
+.nupp:hover {
+    background-color: #6c6c6c;
+}
+
+.nupp:active {
+    border-color: #373737 #b4b4b4 #b4b4b4 #373737;
+}
+
+p {
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
