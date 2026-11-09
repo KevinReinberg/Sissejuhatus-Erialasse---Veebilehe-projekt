@@ -4,7 +4,7 @@
 :root {
     --base-color: #d6d3d3;                       /*tagaplaani värv*/
     --text-color: #0F172A;                       /*tavateksti värv(paragrafid)*/
-    --heading-color: #2a802a;                    /*pealkirjade värv*/
+    --heading-color: #2da32d;                    /*pealkirjade värv*/
     --border-block-color: #e1f3fa;               /*box'i tagaplaani värv*/
     --default-font: 'Minecraft';
 }
@@ -27,12 +27,10 @@ html {
 body{
     padding: 1em;                                  /*kaugus teistest lehe osadest*/
     background-color: var(--base-color);           /*pea teksti tagaplaani värvi määramine*/
-
 }
 
-/*üleva asjade vormistus*/
+
 .nav_lingid {
-    margin: 0em auto 3em auto;                     /*teksti kaugus teistest osadest*/
     width: min(1000px 100%);                       /*määrab navigeerimisriba minimaalse/maksimaalse laiuse*/
     display: flex;                                 /*muudab elemendi paindlikuks konteineriks (Flexbox)*/
     align-items: center;                           /*sõnade paigaldamine keskel*/
@@ -58,33 +56,65 @@ a:hover {
 
 /*h1 pealkiri(tervitus)*/
 h1{
-    margin: 1em auto 2em auto;                     /*teksti kaugus teistest osadest*/
+    margin: 1.5em auto 3em auto;                     /*teksti kaugus teistest osadest*/
     text-align: center;                            /*teksti panemine lehe keskel*/
 }
 
-/*h4 pealkiri(nali)*/
-h4{
-    text-align: left;                              /*teksti panemine lehe vasakul*/
+.tutorial {
+    position: fixed;
+    left: 20px;
+    list-style: none; /* Eemaldab mustad täpid */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Jätab nuppude vahele täpselt 10px vaba ruumi */
 }
 
-/*box ümber linke*/
-.tutorial {
-    border: 2px solid #000000;                   /*box'i seinade paksus ja värv*/
-    padding: 15px 30px;                            /*teksti kaugus seinadest*/
-    display: inline-block;                         /*teeb elemendi plokiks, mis võtab enda alla vaid niipalju ruumi kui sisu nõuab*/
-    border-radius: 10px;                           /*ümardatud nurgad*/
-    background-color: var(--border-block-color);   /*tagaplaani värvi panemine*/
+/* Stiilime iga nupu elemendi (li) eraldi nupuks */
+.tutorial li {
+    background-image: url(pildid/nupp.png);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 350px; /* Nupu laius */
+    height: 50px; /* Nupu kõrgus */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Lingi stiil nupu sees */
+.tutorial li a {
+     /* Roheline tekst */
+    text-decoration: none;
+    font-family: var(--default-font);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 15px; /* Teksti nihe vasakult */
+    box-sizing: border-box;
 }
 
 /*box ümber otsingu ja otsingu koht lehel*/
-.otsing {
-    border: 2px solid #000000;                   /*box'i seinade paksus ja värv*/
-    padding: 5px 10px;                             /*teksti kaugus seinadest*/
-    display: inline-block;                         /*teeb elemendi plokiks, mis võtab enda alla vaid niipalju ruumi kui sisu nõuab*/
-    border-radius: 10px;                           /*ümardatud nurgad*/
-    background-color: var(--border-block-color);   /*tagaplaani värvi panemine*/
-    right: 20px;                                   /*otsingu kaugus lehe paremapoolest*/
-    position: fixed;                               /*positsiooni fikseerimine, et see ei liiguks*/
+.otsing input{
+    position: fixed;
+    right: 20px;
+    top: 150px;
+    width: 280px;
+    height: 50px;
+    padding: 5px 10px;
+    background-image: url(pildid/nupp.png);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    font-family: var(--default-font);
+    font-size: medium;
+    color: #fff;
+}
+
+input::placeholder {
+    color: rgb(197, 196, 196);
 }
 
 /*teksti lehe all vormistamine*/
@@ -99,11 +129,8 @@ b {
     color: green;                                /*värvi panemine roheliseks*/
 }
 
-/*tähtsa teksti vormistus*/
-em {
-    color: darkred;                              /*tähtsa teksti värvimine punaseks*/
-}
 
-input {
-    font-family: var(--default-font);
+.muudatused {
+    text-align: center;
+    margin: 20px auto;
 }
