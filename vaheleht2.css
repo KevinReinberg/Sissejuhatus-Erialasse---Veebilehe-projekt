@@ -29,6 +29,7 @@ body {
     height: 60px;
     width: 60px;
     flex-shrink: 0; /* Ei lase ikoonil väheneda */
+    cursor: pointer; /* Muudab hiirekursori ploki kohal käekujuliseks */
 }
 
 /* keskmine veerg ehk linkide ala, võrdsete vahedega. */
@@ -65,6 +66,8 @@ body {
     box-sizing: border-box;
     padding: 30px;
     flex-shrink: 0;
+    margin-left: -200px; /* Peidab külgriba alguses vasakule ekraanilt välja */
+    transition: margin-left 0.3s ease-in-out; /* Lisab sujuva animatsiooni */
 }
 
 .kylgriba ul {
@@ -91,6 +94,11 @@ body {
     display: block;
     text-shadow: black 2px 2px 0.2rem;
     word-break: break-word;
+}
+
+/* Kui JavaScript lisab klassi 'active', libiseb menüü nähtavale */
+.kylgriba.active {
+    margin-left: 0;
 }
 
 @media (max-width: 768px), (orientation: portrait) {
