@@ -2,8 +2,7 @@
 @import url('https://fonts.cdnfonts.com/css/minecraft-3');
 /*lehe värvide standart(kui vahetame värvi siin, vahetatakse kogu lehel)*/
 :root {
-    --base-color: #d6d3d3;                       /*tagaplaani värv*/
-    --text-color: #0F172A;                       /*tavateksti värv(paragrafid)*/
+    --text-color: #dddddd;                      /*tavateksti värv(paragrafid)*/
     --heading-color: #2da32d;                    /*pealkirjade värv*/
     --border-block-color: #e1f3fa;               /*box'i tagaplaani värv*/
     --default-font: 'Minecraft';
@@ -14,19 +13,37 @@
     margin: 0;                                     /*reset elementide kaugust teine teisest*/
     padding: 0;                                    /*reset elementide kaugust nende ümber*/
     box-sizing: border-box;                        /*arvutab elementide laiuse ja kõrguse koos ääriste ja siseruumiga*/
+    text-shadow: 2px 2px 0px #1e1e1e;
 }
 
 /*kogu lehe teksti vormistamine*/
 html {
-    font-family: var(--default-font);              /*fonti valimine*/
-    color: var(--text-color);                      /*teksti värvi määramine*/
-    height: 100%;                                  /*teeb, et leht võttis kogu ekraani*/
+    font-family: var(--default-font);
+    color: var(--text-color);
+    min-height: 100%;
+    background-image: url('pildid/kivi.jpg');
+    background-repeat: repeat;
+    background-size: 128px 128px;
+    image-rendering: pixelated;
+}
+
+header {
+    background-image: url('pildid/muru.png');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    min-height: 110px;
+    border-bottom: 4px solid #2b2b2b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 320px 20px 290px;
 }
 
 /*pea teksti vormistus*/
 body{
-    padding: 1em;                                  /*kaugus teistest lehe osadest*/
-    background-color: var(--base-color);           /*pea teksti tagaplaani värvi määramine*/
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -41,7 +58,7 @@ body{
 /*Kõikide linkide vormistus*/
 a {
     text-decoration: none;                         /*underline'i eemaldamine*/
-    color: #228fe8;                              /*lingide värv = sinine*/
+    color:var(--heading-color)                              /*lingide värv = sinine*/
 }
 
 /*tutorial linkide vormistus*/
@@ -56,17 +73,20 @@ a:hover {
 
 /*h1 pealkiri(tervitus)*/
 h1{
-    margin: 1.5em auto 3em auto;                     /*teksti kaugus teistest osadest*/
-    text-align: center;                            /*teksti panemine lehe keskel*/
+    margin: 0;
+    text-align: center;
+    font-size: 28px;
+    color: #ffffff;
+    text-shadow: 3px 3px 0px #1e1e1e;
 }
 
 .tutorial {
     position: fixed;
+    padding-top: 15px;
     left: 20px;
     list-style: none; /* Eemaldab mustad täpid */
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Jätab nuppude vahele täpselt 10px vaba ruumi */
 }
 
 /* Stiilime iga nupu elemendi (li) eraldi nupuks */
@@ -122,15 +142,125 @@ footer {
     position: fixed;                               /*teksti fikseerimine, et see ei liiguks*/
     bottom: 20px;                                  /*teksti kaugus lehe alt*/
     right: 20px;                                   /*teksti kaugus lehe paremapoolest*/
+    color: #80c0ff; /* Helesinine värv suurema nähtavuse tagamiseks (või kasuta #7cfc00 rohelise jaoks) */
+    text-shadow: 2px 2px 0px #1e1e1e; /* Lisab musta varju, et tekst kivitaustalt selgelt välja paistaks */
+    font-family: var(--default-font);
 }
 
 /*Bold teksti vormistus*/
 b {
-    color: green;                                /*värvi panemine roheliseks*/
+    color: #7cfc00;
 }
 
+/* Otsingutulemuste stiil */
+.otsing {
+    position: relative;
+}
 
+.otsing-tulemused {
+    position: fixed;
+    right: 20px;
+    top: 205px;
+    width: 280px;
+    background-color: rgba(0, 0, 0, 0.9);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    z-index: 100;
+    border: 1px solid #555;
+}
+
+.otsing-tulemused li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    font-size: small;
+    text-decoration: none;
+}
+
+.otsing-tulemused li a:hover {
+    background-color: #228fe8;
+}
+
+/* Viimased muudatused / GitHubi commit'id */
 .muudatused {
-    text-align: center;
-    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 40px auto 0 auto;
+    max-width: 600px;
+}
+
+/* Pealkiri "Viimased muudatused:" omaette nupuna */
+.muudatused > a {
+    background-image: url('pildid/nupp.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 450px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--heading-color);
+    text-shadow: 2px 2px 0px #1e1e1e;
+    text-decoration: none;
+}
+
+.muudatused > a:hover {
+    text-decoration: underline;
+    filter: brightness(1.1);
+}
+
+.muudatused ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+}
+
+/* Iga muudatus (ja laadimistekst) omaette nupu sees */
+.muudatused li {
+    background-image: url('pildid/nupp.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 450px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #ffffff;
+    text-shadow: 1px 1px 0px #1e1e1e;
+    overflow: hidden; /* Peidab nupu piiridest välja ulatuva teksti */
+}
+
+.muudatused li a {
+    font-size: 18px; 
+    color: #ffffff;
+    text-decoration: none;
+    max-width: 100%; /* Sunnib linki nupu sisse mahtuma */
+    white-space: nowrap; /* Hoiab teksti ühel real */
+    overflow: hidden; /* Peidab liigse teksti */
+    text-overflow: ellipsis; /* Kuvab kolm punkti (...) */
+    display: block; /* Vajalik ellipsis'e toimimiseks flex-elemendi sees */
+}
+
+.muudatused li a:hover {
+    color: #ffffa0;
+    text-decoration: underline;
+}
+
+.muudatused li.laeb {
+    color: #f2f2f2;
+    font-style: italic;
 }
