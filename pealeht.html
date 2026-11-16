@@ -24,28 +24,30 @@
     <!-- Peamised asjad -->
     <main>
         <!--otsing-->
-        <div class="otsing">
-            <input type="text" placeholder="Otsi tutorialit siin:  ">
+        <div id="otsing-sisend" class="otsing">
+            <input type="text" placeholder="Otsi tutorialit siin:(Praegu ei tööta)  ">
         </div>
 
         <!--lingid-->
-        <div class="tutorial">  
+        <div id="tutorial-nimekirjakohane" class="tutorial">  
             <ul>
                 <!--link1-->
-                <li>
+                <li data-pealkiri="Dark Triad Opening">
                     <h2><a href="patrick.html">Dark Triad Opening</a></h2>
                 </li>
 
                 <!--link2-->
-                <li>
-                    <h2><a href="vaheleht2.html">Vahemaa kalkulaator</a></h2>
+                <li data-pealkiri="Vahemaa kalkulaator">
+                    <h2><a href="vaheleht 2/vaheleht2.html">Vahemaa kalkulaator</a></h2>
                 </li>
             </ul>
         </div>
 
         <div class="muudatused">
-            <a href="#">Viimased muudatused:</a>
-            <p></p>
+            <a href="https://github.com/KevinReinberg/Sissejuhatus-Erialasse---Veebilehe-projekt/commits/main" target="_blank">Viimased muudatused:</a>
+            <ul id="github-commitid">
+                <li class="laeb">Laen viimaseid muudatusi...</li>
+            </ul>
         </div>
 
     </main>
@@ -60,5 +62,6 @@
         </nav>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
