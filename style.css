@@ -21,14 +21,14 @@ html {
     font-family: var(--default-font);
     color: var(--text-color);
     min-height: 100%;
-    background-image: url('pildid/kivi.jpg');
+    background-image: url('vaheleht 2/pildid/kivi.jpg');
     background-repeat: repeat;
     background-size: 128px 128px;
     image-rendering: pixelated;
 }
 
 header {
-    background-image: url('pildid/muru.png');
+    background-image: url('vaheleht 2/pildid/muru.png');
     background-repeat: repeat-x;
     background-size: auto 100%;
     min-height: 110px;
@@ -124,7 +124,7 @@ h1{
     width: 280px;
     height: 50px;
     padding: 5px 10px;
-    background-image: url(pildid/nupp.png);
+    background-image: url('vaheleht 2/pildid/nupp.png');
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -199,7 +199,7 @@ b {
 
 /* Pealkiri "Viimased muudatused:" omaette nupuna */
 .muudatused > a {
-    background-image: url('pildid/nupp.png');
+    background-image: url('vaheleht 2/pildid/nupp.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -232,7 +232,7 @@ b {
 
 /* Iga muudatus (ja laadimistekst) omaette nupu sees */
 .muudatused li {
-    background-image: url('pildid/nupp.png');
+    background-image: url('vaheleht 2/pildid/nupp.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
