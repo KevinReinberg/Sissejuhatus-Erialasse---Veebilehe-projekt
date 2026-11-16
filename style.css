@@ -44,6 +44,7 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative; /* Vajalik, et absolute nupud positsioneeruksid keha suhtes */
 }
 
 
@@ -81,8 +82,8 @@ h1{
 }
 
 .tutorial {
-    position: fixed;
-    padding-top: 15px;
+    position: absolute; 
+    top: 150px;       /* Paigutab selle pealkirja alla, mitte päise peale */
     left: 20px;
     list-style: none; /* Eemaldab mustad täpid */
     display: flex;
@@ -117,9 +118,9 @@ h1{
 
 /*box ümber otsingu ja otsingu koht lehel*/
 .otsing input{
-    position: fixed;
+    position: absolute;
     right: 20px;
-    top: 150px;
+    top: 15px;
     width: 280px;
     height: 50px;
     padding: 5px 10px;
@@ -183,14 +184,17 @@ b {
     background-color: #228fe8;
 }
 
+
 /* Viimased muudatused / GitHubi commit'id */
 .muudatused {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    margin: 30px auto 0 auto; /* Hoiab kasti keskel ja annab üles ruumi */
     margin: 40px auto 0 auto;
     max-width: 600px;
+    z-index: 10; /* Hoiab muudatused teiste elementide peal, et need ei läheks segamini */
 }
 
 /* Pealkiri "Viimased muudatused:" omaette nupuna */
