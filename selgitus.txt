@@ -1,0 +1,5 @@
+Rajasid endale kaks baasi, mis on üksteisest väga kaugel? Soovid, et saaksid nende vahel kiiresti liigelda, justkui mööda maanteed pidi? Selleks kasuta ära Nether maailma.
+
+Liigeldes 1 ploki võrra misiganes suunas Netheris, liigud tavamaailmas suhteliselt selle võrra 8 plokki ehk teisisõnu Nether on 8 korda väiksem kui tavamaailm. Seda omadust saab ära kasutada Nether-maanteede rajamiseks. Sageli on aga suurimaks probleemiks maailmatevaeliste portaalide püstitamisel, mis koordinaatidele need rajada. Selle jaoks oleme loonud kasuliku kalkulaatori, mis teeb kõik raske arvutamise just Sinu jaoks ära. Nii võidad aega, mida saad pühendada oma serveri vallutamisele.
+
+Kasulik nipp. Kuigi nether-maanteed teevad küll punktide vahel liiklemise kiiremaks, siis võivad vahemaad siiski olla päris suured. Loo pikad sirged lõigud, mis on 2 plokki laiad ja põrand kaetud kokkupressitud jääga. Huvitava omadusena ei sula jää kuumas põrgus ära ja see teeb liiklemise olulisemalt kiiremaks.
