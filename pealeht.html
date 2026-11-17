@@ -1,69 +1,57 @@
 <!DOCTYPE html>
-<!--Koduleht(Landing page)-->
-<!--html asjad-->
 <html lang="et">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--lehe title brauseri aknas-->
     <title>The Dark Triad</title>
     <link rel="icon" type="image/x-icon" href="pildid/ikoon.png">
-    <!--Css ehk vormistuse importeerimine-->
     <link rel="stylesheet" href="style.css">
 </head>
-
-<!--lehe tekst-->
 <body>
-    <!--asjad lehe üleval-->
+    <!-- Lehe päis -->
     <header>
-        <!--lehe keskel suur tekst-->
         <h1>Welcome to <b>Minecraft tutorialid</b> for noobs!</h1>
-
     </header>
 
-    <!-- Peamised asjad -->
+    <!-- Peamine sisu -->
     <main>
-        <!--otsing-->
-        <div id="otsing-sisend" class="otsing">
-            <input type="text" placeholder="Otsi tutorialit siin:(Praegu ei tööta)  ">
+        <!-- Otsinguriba -->
+        <div class="otsing">
+            <input type="text" class="nupp" placeholder="Otsi tutorialit siin: (Praegu ei tööta)">
         </div>
 
-        <!--lingid-->
-        <div id="tutorial-nimekirjakohane" class="tutorial">  
+        <!-- Õpetuste ehk tutorialite nimekiri -->
+        <div class="tutorial">  
             <ul>
-                <!--link1-->
-                <h2 data-pealkiri="Dark Triad Opening"><a href="patrick.html">Dark Triad Opening</a></h2>
-
-                <!--link2-->
-                <h2 data-pealkiri="Vahemaa kalkulaator"><a href="vaheleht_2/vaheleht2.html">Vahemaa kalkulaator</a></h2>
-
+                <li><a href="patrick.html" class="nupp"><h2>Dark Triad Opening</h2></a></li>
+                <li><a href="vaheleht_2/vaheleht2.html" class="nupp"><h2>Vahemaa kalkulaator</h2></a></li>
             </ul>
         </div>
-        <!--"Viimased muudatused"-->
+
+        <!-- GitHubi viimased muudatused -->
         <div class="muudatused">
-            <a href="https://github.com/KevinReinberg/Sissejuhatus-Erialasse---Veebilehe-projekt/commits/main" target="_blank">Viimased muudatused:</a>
+            <a class="nupp" href="https://github.com/KevinReinberg/Sissejuhatus-Erialasse---Veebilehe-projekt/commits/main" target="_blank">Viimased muudatused:</a>
             <ul id="github-commitid">
-                <li class="laeb">Laen viimaseid muudatusi...</li>
+                <li class="nupp laeb">Laen viimaseid muudatusi...</li>
             </ul>
-        </div>
-
-        <div class="allikad">
-            <a href="#">Allikad</a>
         </div>
 
     </main>
+    
+    <!-- Allikate nupp -->
+    <div class="allikad">
+        <a class="nupp" href="#">Allikad</a>
+    </div>
 
-    <!--tekst lehe vasakul all-->
+    <!-- Lehe jalus -->
     <footer>
         <nav class="nav_lingid">
-            <!--repo ja muu info projektist-->
             <a href="https://github.com/KevinReinberg/Sissejuhatus-Erialasse---Veebilehe-projekt">GitHub</a>
             <a href="https://github.com/KevinReinberg/Sissejuhatus-Erialasse---Veebilehe-projekt/blob/main/README.md">About US</a>
             <a href="https://ut.ee" target="_blank">UT.EE</a>
         </nav>
     </footer>
-    <!--link JS skriptile-->
-    <script src="script.js"></script>
+
+    <script src="pealeht.js"></script>
 </body>
 </html>

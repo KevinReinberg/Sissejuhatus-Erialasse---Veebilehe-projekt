@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
         /* Määrab GitHubi API aadressi, kust küsitakse konkreetse repositooriumi 3 viimast commit'i */
         const apiURL = 'https://api.github.com/repos/KevinReinberg/Sissejuhatus-Erialasse---Veebilehe-projekt/commits?per_page=3';
 
-        /* GitHubi isiklik ligipääsu PAT (Personal Access Token), mis hoiab ära päringute limiidi ületamise */
+        /* GitHubi isiklik ligipääsu PAT (Personal Access Token). 
+           Kui sul tekib 403 viga, võid selle tühjaks jätta (const githubToken = '';), 
+           kuna avalikud repod ei vaja alati tokenit. */
         const githubToken = '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'; 
 
         /* Loob HTTP päise objekti, öeldes GitHubile, et soovime andmeid JSON formaadis */
@@ -21,9 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         /* Kontrollib, kas token on olemas ja erineb vaikimisi väärtusest */
-        if (githubToken !== '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') {
-            
-            /* Lisab päisesse 'Authorization' rea, mis annab õiguse teha kuni 5000 päringut tunnis */
+        if (githubToken && githubToken !== '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') {
             headers['Authorization'] = `Bearer ${githubToken}`;
         }
 
@@ -32,68 +32,50 @@ document.addEventListener('DOMContentLoaded', function() {
         
             /* Võtab vastu vastuse ja kontrollib, kas kõik korras */
             .then(response => {
-                
-                /* Kui server vastab veaga (nt 404 või 403), viskab veateate */
                 if (!response.ok) {
                     throw new Error(`Võrguviga GitHubi andmete laadimisel (Staatuse kood: ${response.status})`);
                 }
-                
-                /* Teisendab serveri vastuse JavaScripti objektideks (JSON formaati) */
                 return response.json();
             })
             
             /* Kui andmed on edukalt käes, tehakse nendega järgnevat */
             .then(data => {
                 
-                /* Tühjendab kasti sisust (võtab ära ajutise teksti "Laen...") */
+                /* Tühjendab kasti ajutisest tekstist ("Laen...") */
                 commitideKast.innerHTML = ''; 
                 
                 /* Võtab saadud andmetest vaid esimesed 3 commit'i ja käib need ükshaaval läbi */
                 data.slice(0, 3).forEach(commitObj => {
-                    
-                    /* Võtab commit'i objektist sõnumi (mida muudeti) */
                     const sõnum = commitObj.commit.message;
-                    
-                    /* Võtab commit'i tegija (autori) nime */
                     const autor = commitObj.commit.author.name;
-                    
-                    /* Võtab konkreetse commit'i veebiaadressi GitHubis */
                     const commitUrl = commitObj.html_url;
                     
-                    /* Kui sõnum on pikem kui 45 tähemärki, lõikab selle lühemaks ja lisab punktiir, muidu jätab samaks */
-                    const lühikeSõnum = sõnum.length > 45 ? sõnum.substring(0, 42) + '...' : sõnum;
-
+                    /* Lõikab liiga pika sõnumi lühemaks, et see nupule ära mahuks */
+                    const lühikeSõnum = sõnum.length > 25 ? sõnum.substring(0, 22) + '...' : sõnum;
                     /* Loob uue HTML listi elemendi (<li>) */
                     const li = document.createElement('li');
                     
+                    /* TÄHTIS: Annab <li> elemendile klassi 'nupp', et see saaks nupu kuju ja stiili */
+                    li.className = 'nupp'; 
+                    
                     /* Loob uue HTML lingi elemendi (<a>) */
                     const a = document.createElement('a');
-                    
-                    /* Määrab lingi sihtmärgiks GitHubi commit'i lehe */
                     a.href = commitUrl;
-                    
-                    /* Paneb lingi avanema uues vahelehes/aknas */
                     a.target = '_blank';
-                    
-                    /* Määrab lingi tekstiks lühikese sõnumi ja autori nime sulgudes */
                     a.textContent = `${lühikeSõnum} (${autor})`;
                     
-                    /* Paigutab lingi (<a>) listi elemendi (<li>) sisse */
+                    /* Paigutab lingi listi elemendi sisse ja selle kastikesse lehel */
                     li.appendChild(a);
-                    
-                    /* Paigutab loodud listi elemendi GitHubi commit'ide kastikesse lehel */
                     commitideKast.appendChild(li);
                 });
             })
             
             /* Püüab kinni kõik vead, kui andmete toomine ebaõnnestub */
             .catch(error => {
-                
-                /* Kirjutab vea konsooli silumiseks */
                 console.error("Commit'ide laadimine ebaõnnestus:", error);
                 
-                /* Kuvab lehel kasutajale veateate */
-                commitideKast.innerHTML = '<li>Viimaste muudatuste laadimine ebaõnnestus.</li>';
+                /* Kuvab veateate nii, et ka see kasutab 'nupp' klassi */
+                commitideKast.innerHTML = '<li class="nupp laeb">Laadimine ebaonnestus</li>';
             });
     }
 });
