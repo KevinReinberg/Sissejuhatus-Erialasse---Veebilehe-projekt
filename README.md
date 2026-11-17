@@ -1,6 +1,5 @@
-# Sissejuhatus-Erialasse---Veebilehe-projekt
-
-# Tere!
+# Tutvustus
+Tere!
 
 Projekt *poiss* saab olema **Minecrafti fännileht**, mis koosneb kolmest osast: **pealeht** ehk landing page, **1. vaheleht**, mis on *satiirilises* võtmes tutvustus, kuidas vallutada Mincrafti serveri maailm, ja **2. vaheleht**, mis aitab mainitud maailmas vahemaid arvutada kasuliku kalkulaatoriga. Rühm on kolmeliikmeline ning igaüks saab õppida veebiarendust oma leheküljega.
 
@@ -11,6 +10,7 @@ Igaüks korraldab oma lehekülje *HTML*, *CSS* ja *JS* koodi: *Erik*: **pealehe*
 **Veebilehe saate külastada siin:** `https://kodu.ut.ee/~polyanskiy/projekt/pealeht.html`
 (Osa lehtedest töötavad ka **telefonis**, kuigi võivad esineda mõned *probleemid*)
 
+# Normid
 Rühmatöö normid **säilivad**, muutusi pole lisada.
 
 **Rühma normid:**
@@ -21,6 +21,8 @@ Rühmatöö normid **säilivad**, muutusi pole lisada.
 4) Kui eesmärk pole saavutatud, saame koosolekul eesmärke paindlikult muuta.
 5) Aitab rühmal olla tõhus ja püsida teema juures.
 
+
+# Sisu
 **Ülevaade praeguse veebilehe funktsioonalsusest:** 
 Praegu on *2 vahelehe* ja *pealeht* ning ka *allikate lehed.*
 
