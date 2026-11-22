@@ -1,12 +1,22 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 100px 0 0 0;
     min-height: 100vh;
     background-image: url("pildid/Taustapilt.png");
+    overflow-x: clip;
+}
 
+html {
+    overflow-x: clip;
 }
 
 .header_taust {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 30;
+
     background: left / cover
     url("pildid/kivim.jpg");
     background-repeat: repeat-x;
@@ -36,6 +46,7 @@ body {
     display: flex;
     align-items: center;
     gap: 40px;
+    min-width: 0;
 }
 
 .link {
@@ -75,6 +86,11 @@ body {
     flex-shrink: 0;
     margin-left: -200px; /* Peidab külgriba vaikimisi vasakule ekraanilt välja */
     transition: margin-left 0.3s ease-in-out; /* Lisab sujuva avanemise animatsiooni */
+}
+
+.kylgriba nav {
+    position: sticky;
+    top: 120px;
 }
 
 .kylgriba ul {
@@ -118,20 +134,85 @@ body {
 }
 
 @media (max-width: 768px), (orientation: portrait) {
+    body {
+        padding-top: 76px;
+    }
+
+    .header_taust {
+        height: auto;
+        min-height: 76px;
+        padding: 10px 12px;
+        gap: 12px;
+        flex-wrap: nowrap;
+        overflow-x: clip;
+        z-index: 30;
+    }
+
+    .logo {
+        height: 44px;
+        width: 44px;
+    }
+
+    .nav-ala {
+        gap: 8px;
+        flex-wrap: nowrap;
+        min-width: 0;
+    }
+
+    .link {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
     .kylgriba {
-        width: 100px;
-        padding: 20px 5px;
+        position: fixed;
+        top: 76px;
+        left: 0;
+        height: calc(100vh - 76px);
+        width: 140px;
+        padding: 16px 8px;
+        margin-left: -140px;
+        z-index: 20;
+    }
+
+    .kylgriba.active {
+        margin-left: 0;
+    }
+
+    .kylgriba nav {
+        position: sticky;
+        top: 16px;
     }
 
     .kylg_link {
-        font-size: 16px;
+        font-size: 15px;
+        padding: 8px 6px;
+        word-break: normal;
+        overflow-wrap: break-word;
+    }
+
+    .punktid-rida {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .mc-input {
+        max-width: 110px;
+        font-size: 15px;
     }
 }
 /* sisu ala */
 
 .sisu {
     flex: 1;
+    min-width: 0;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -179,6 +260,8 @@ h2 {
     border-radius: 4px;
     color: #ffffff;
     box-shadow: inset -4px -4px 0px 0px #1e1e1e, inset 4px 4px 0px 0px #5a5a5a;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 
@@ -255,4 +338,6 @@ p {
     color: white;
     text-align: center;
     margin-top: 20px;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
