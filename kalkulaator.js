@@ -38,9 +38,21 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("overworldKaugus").innerHTML = "<strong>" + overworldKaugus.toFixed(1) + "</strong> plokki";
         document.getElementById("netherKaugus").innerHTML = "<strong>" + netherKaugus.toFixed(1) + "</strong> plokki";
         
-        document.getElementById("netherA").innerText = "Punkti A Nether portaal: X: " + netherX1 + ", Y: " + y1 + ", Z: " + netherZ1;
-        document.getElementById("netherB").innerText = "Punkti B Nether portaal: X: " + netherX2 + ", Y: " + y2 + ", Z: " + netherZ2;
+        document.getElementById("netherA").innerText = "Alguskoha Nether portaal: X: " + netherX1 + ", Y: " + y1 + ", Z: " + netherZ1;
+        document.getElementById("netherB").innerText = "Sihtkoha Nether portaal: X: " + netherX2 + ", Y: " + y2 + ", Z: " + netherZ2;
         
         document.getElementById("kokkuhoidTekst").innerText = "Netheri tunnel säästab sulle umbes " + saastetudPlokid + " ploki pikkuse teekonna!";
     });
 });
+
+// Otsime üles Minecrafti ploki ja külgmenüü elemendid
+const menuToggle = document.getElementById('menüü_nupp');
+const sidebar = document.getElementById('kylgriba');
+
+if (menuToggle && sidebar) {
+    // Kuulame klikki Minecrafti ploki peal
+    menuToggle.addEventListener('click', function() {
+        // Lisab või eemaldab 'active' klassi iga kord, kui plokile vajutad
+        sidebar.classList.toggle('active');
+    });
+}

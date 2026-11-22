@@ -1,0 +1,383 @@
+/* ====================================================================================
+1. ROOT-MUUTUJAD, LÄHTESTAMINE (RESET) JA ÜLDSTIILID
+   ================================================================================    
+   Ühtlustatud failiga 1.css: määrab lehe baasväärtused, fondid, värvimuutujad ja 
+   nullib brauseri vaikimisi varud.
+   ================================================================================ */
+
+/* Laeb internetist alla Minecrafti stiilis kirjatüübi */
+@import url('https://fonts.cdnfonts.com/css/minecraft-3');
+
+/* :root on "mälu" ehk muutujate kogum. Kui muudad värvi või suurust siin, 
+   muutub see automaatselt igal pool lehel, kus seda muutujat (var(...)) kasutatakse */
+:root {
+    --text-color: #ffffff;          /* Põhiteksti valge värv */
+    --heading-color: #ffffff;       /* Pealkirjade ja nuppude valge värv */
+    --accent-color: #ffffff;        /* Esiletõstetud teksti valge värv */
+    --link-color: #80c0ff;          /* Sisulinkide helesinine värv */
+    --white: #ffffff;               /* Puhas valge värv tekstidele */
+    --shadow-color: #1e1e1e;        /* Tekstivarjude tume toon */
+    --border-block-color: #e1f3fa;  /* Kaartide/plokkide abivärv */
+
+    --default-font: 'Minecraft', sans-serif; /* Vaikimisi kirjatüüp */
+    --standart-gap: 10px;           /* Standardne vahe elementide vahel */
+    --standart-font-size: 20px;     /* Standardne teksti suurus */
+    --button-width: 400px;          /* Standardne nupu laius */
+    --button-height: 60px;          /* Standardne nupu kõrgus */
+}
+
+/* Tärn (*) tähendab "absoluutselt kõik elemendid lehel" */
+* {
+    margin: 0;                      /* Eemaldab brauseri vaikimisi välisvahed */
+    padding: 0;                     /* Eemaldab brauseri vaikimisi sisevahed */
+    box-sizing: border-box;         /* Hoiab äärised ja sisevahed elemendi määratud laiuse sees, et kastid ei läheks laiemaks */
+    font-family: var(--default-font);
+    text-shadow: 2px 2px 0px var(--shadow-color); /* Lisab igale tekstile tumeda varju (2px paremale, 2px alla) */
+}
+
+/* HTML elemendi seadistused: kogu lehe taust ja kerimise käitumine */
+html {
+    font-family: var(--default-font);
+    color: var(--text-color);
+    min-height: 100%;
+    /* Lühikirje: taustapilt | kordub igas suunas | algab nurgast 0 0 | ühe ruudu suurus 128x128px */
+    background: url('pildid/tammekoor.png') repeat 0 0 / 128px 128px;
+    image-rendering: pixelated;     /* Hoiab pikslid teravana ega lase brauseril pilti uduseks siluda */
+    scroll-behavior: smooth;        /* Paneb lehe sujuvalt kerima, kui vajutad ankur-lingile (nt #selgitus) */
+}
+
+/* Keha (body) seadistused */
+body {
+    min-height: 100vh;              /* 100vh = 100% ekraani nähtavast kõrgusest (Viewport Height) */
+    display: flex;                  /* Flexbox paigutus: lubab sisu lihtsalt üksteise alla või kõrvale laduda */
+    flex-direction: column;         /* Laob peamised plokid (päis ja sisu) üksteise alla veergu */
+    position: relative;
+}
+
+/* Üldine lingi (<a>), esiletõstetud teksti (<b>) ja lõigu (<p>) stiil */
+a {
+    text-decoration: none;          /* Eemaldab linkide alt vaikimisi allajoonimise */
+    color: var(--heading-color);
+}
+
+b {
+    color: var(--accent-color);
+}
+
+/* Selgituse tekst: võrdselt sildi (.kaart) laiusega otse selle all ja keskel */
+p {
+    width: 100%;
+    max-width: 640px;               /* Piirab teksti laiuse täpselt sama laiaks nagu sildikast */
+    margin: 20px auto 0 auto;       /* "auto" vasakul ja paremal lükkab tekstiploki täpselt ekraani keskele */
+    font-size: var(--standart-font-size);
+    color: var(--text-color);
+    text-align: center;
+    line-height: 1.5;               /* Ridade vahekaugus (1.5x fondi suurus), et teksti oleks mugavam lugeda */
+}
+
+
+/* ====================================================================================
+2. KORDUVATE ELEMENTIDE VORMISTUS (NUPUD JA SISENDVÄLJAD)
+   ================================================================================ */
+
+/* Ühtne nupu stiil */
+.nupp {
+    display: flex;
+    align-items: center;            /* Joondab teksti nupu sees vertikaalselt keskele */
+    justify-content: center;        /* Joondab teksti nupu sees horisontaalselt keskele */
+    margin: 0 auto;
+    width: 100%;
+    max-width: var(--button-width);
+    min-height: var(--button-height);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 0;
+    font-size: var(--standart-font-size);
+    color: var(--heading-color);
+    /* Venitab nupu taustapildi täpselt 100% laiuseks ja 100% kõrguseks vastavalt nupu suurusele */
+    background: url("pildid/nupp.png") no-repeat center / 100% 100%;
+    cursor: pointer;                /* Muudab hiirekursori nupu kohal käekujuliseks */
+}
+
+/* :hover rakendub siis, kui viid hiirekursori nupu peale */
+.nupp:hover {
+    filter: brightness(1.1);        /* Teeb nupu pildi 10% heledamaks */
+}
+
+/* :active rakendub sel hetkel, kui nuppu alla vajutad */
+.nupp:active {
+    filter: brightness(0.95);       /* Teeb nupu vajutuse hetkel 5% tumedamaks */
+}
+
+/* Sisendväljad (Minecrafti sildi taustaga, ilma numbri-noolteta) */
+.mc-input {
+    width: 100%;
+    max-width: 160px;
+    padding: 8px 12px;
+    font-size: var(--standart-font-size);
+    color: var(--white);
+    text-align: center;
+    background-image: url("pildid/silt.png");
+    background-repeat: repeat;
+    background-position: top left;
+    background-size: auto;
+    image-rendering: pixelated;
+    border: 3px solid;
+    /* Neli värvi järjekorras: ülemine, parem, alumine, vasak (tekitab 3D sügavuse efekti) */
+    border-color: #5c4731 #e5c198 #e5c198 #5c4731;
+    outline: none;                  /* Eemaldab brauseri sinise/valge raami kasti ümbert klikkimisel */
+    -moz-appearance: textfield;     /* Peidab numbrivälja üles-alla nooled Firefoxis */
+    appearance: textfield;
+}
+
+/* Peidab numbrivälja üles-alla nooled Chrome'is, Edge'is ja Safaris */
+.mc-input::-webkit-outer-spin-button,
+.mc-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ::placeholder muudab vihjeteksti välimust enne, kui kasutaja midagi kasti kirjutab */
+.mc-input::placeholder {
+    color: rgb(197, 196, 196);
+    font-size: 16px;
+}
+
+/* :focus rakendub siis, kui kast on aktiivne (kasutaja kirjutab sinna sisse) */
+.mc-input:focus {
+    filter: brightness(1.1);
+    border-color: var(--white) #000000 #000000 var(--white); /* Vahetab 3D-raami värvid ringi */
+}
+
+
+/* ====================================================================================
+3. PÄIS (HEADER) JA NAVIGATSIOON
+   ================================================================================ */
+
+.header_taust {
+    height: 104px;                  /* 100px kivimüüri rida + 4px alumine äärisjoon ilma tühja vaheta */
+    padding: 0 20px;
+    border-bottom: 4px solid #2b2b2b;
+    background-image: url("pildid/kivim.jpg");
+    background-repeat: repeat-x;    /* Kordab taustapilti ainult horisontaalselt (vasakult paremale) */
+    background-position: top left;
+    background-size: 100px 100px;
+    image-rendering: pixelated;
+    display: flex;                  /* Paigutab logo ja lingid kõrvuti ühele reale */
+    align-items: center;            /* Joondab logo ja lingid vertikaalselt rea keskele */
+    gap: 40px;                      /* Jätab logo ja linkide vahele 40px ruumi */
+}
+
+.logo {
+    background: url("pildid/ikoon.png") no-repeat center / contain; /* "contain" mahutab terve ikooni kasti sisse ilma lõikamata */
+    height: 60px;
+    width: 60px;
+    flex-shrink: 0;                 /* Keelab logol kitsal ekraanil väiksemaks kokku suruda */
+}
+
+/* Keskmine veerg ehk linkide ala */
+.nav-ala {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;                /* Lubab linkidel vajadusel järgmisele reale murduda */
+    gap: 20px;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--heading-color);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px 24px;
+    text-align: center;
+    white-space: nowrap;            /* Keelab nupu tekstil mitmele reale murduda */
+    background: url("pildid/nupp.png") no-repeat center / 100% 100%;
+    cursor: pointer;
+    border: none;
+}
+
+.link:hover {
+    filter: brightness(1.1);
+}
+
+
+/* ====================================================================================
+4. LEHE PÕHIOSA JA KÜLGRIBA
+   ================================================================================ */
+
+.lehe_sisu {
+    display: flex;                  /* Paigutab külgriba ja põhisisu kõrvuti */
+    flex: 1;                        /* Venitab sisuala nii, et see täidaks kogu vaba ruumi päise all */
+    min-height: calc(100vh - 104px);/* Arvutab kõrguse: terve ekraan miinus 104px päis */
+}
+
+/* Külgriba */
+.kylgriba {
+    width: 220px;
+    background-image: url("pildid/kivim.jpg");
+    background-repeat: repeat;
+    background-position: top left;
+    background-size: 100px 100px;
+    image-rendering: pixelated;
+    border-right: 4px solid #2b2b2b;
+    padding: 30px 20px;
+    flex-shrink: 0;                 /* Hoiab külgriba laiuse alati kindlalt 220px peal */
+    margin-left: -220px;            /* Nihutab külgriba täpselt oma laiuse võrra vasakule ekraanilt välja (peitu) */
+    transition: margin-left 0.3s ease-in-out; /* Teeb menüü välja libisemise sujuvaks (kestab 0.3 sekundit) */
+}
+
+/* Kui JavaScript lisab elemendile klassi 'active', muutub vasak nihe 0-ks ja menüü libiseb nähtavale */
+.kylgriba.active {
+    margin-left: 0;
+}
+
+.kylgriba ul {
+    list-style-type: none;          /* Eemaldab nimekirja eest täpikesed */
+    display: flex;
+    flex-direction: column;         /* Laob menüülingid üksteise alla */
+    align-items: center;
+    gap: 30px;
+}
+
+.kylgriba li {
+    width: 100%;
+    text-align: center;
+}
+
+.kylg_link {
+    display: block;
+    width: 100%;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px 10px;
+    word-break: break-word;         /* Murrab liiga pika sõna poolitusega uuele reale, et see ei läheks nupust välja */
+    background: url("pildid/nupp.png") no-repeat center / 100% 100%;
+    cursor: pointer;
+    border: none;
+}
+
+.kylg_link:hover {
+    filter: brightness(1.1);
+}
+
+
+/* ====================================================================================
+5. SISUALA, PEALKIRJAD JA SILDI KAARDID
+   ================================================================================ */
+
+.sisu {
+    flex: 1;                        /* Võtab enda alla kogu ülejäänud laiuse külgriba kõrval */
+    width: 100%;
+    padding: 30px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--white);
+    text-shadow: 3px 3px 0px var(--shadow-color);
+    scroll-margin-top: 20px;        /* Jätab ankur-lingiga (#kalkulaator) pealkirjani hüpates 20px ruumi üles serva */
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--heading-color);
+    text-align: center;
+    scroll-margin-top: 20px;        /* Jätab ankur-lingiga (#selgitus) pealkirjani hüpates 20px ruumi üles serva */
+}
+
+/* Sildi kast: samasugune puittekstuur ja raam nagu sisendkastidel, fikseeritud proportsiooniga */
+.kaart {
+    width: 100%;
+    max-width: 640px;               /* Täpselt 5x128px taustaruudustikust, et ei veniks laial ekraanil */
+    margin: 0 auto 24px auto;       /* Keskele joondatud, allpool on 24px vahe järgmise elemendiga */
+    padding: 24px;
+    background-image: url("pildid/silt.png");
+    background-repeat: repeat;
+    background-position: top left;
+    background-size: auto;
+    image-rendering: pixelated;
+    border: 4px solid;
+    border-color: #5c4731 #e5c198 #e5c198 #5c4731;
+    border-radius: 0;
+    color: var(--white);
+}
+
+.punktid-rida {
+    display: flex;
+    flex-direction: row;            /* Paigutab Alguskoha ja Sihtkoha tulbad kõrvuti */
+    flex-wrap: wrap;                /* Kui ekraan on kitsas, kukub teine tulp automaatselt esimese alla */
+    gap: 30px;
+    justify-content: center;
+}
+
+.punktid-tulp {
+    display: flex;
+    flex-direction: column;         /* Laob X, Y ja Z väljad tulbas üksteise alla */
+    align-items: center;
+    gap: var(--standart-gap);
+}
+
+.punktid-tulp label {
+    display: block;
+    font-size: 18px;
+    color: var(--white);
+}
+
+.nupp-konteiner {
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+/* ====================================================================================
+6. Disain, mis sobib ka väiksematele ekraanidele (responsiivne disain)
+   ================================================================================ */
+
+/* @media reeglid rakenduvad ainult siis, kui ekraani laius on 1100px või väiksem */
+@media screen and (max-width: 1100px) {
+    .header_taust {
+        flex-direction: column;     /* Laob päises logo ja nupud üksteise alla, et nad mahuksid ära */
+        height: auto;               /* Lubab päisel kõrgemaks venida vastavalt sisule */
+        padding: 15px 20px;
+        gap: 15px;
+        background-repeat: repeat;
+    }
+
+    .nav-ala {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .link {
+        width: 90vw;                /* 90vw = 90% ekraani laiusest (Viewport Width) */
+        max-width: var(--button-width);
+        font-size: 16px;
+    }
+
+    .nupp {
+        width: 100%;
+        max-width: var(--button-width);
+        font-size: 16px;
+    }
+}
+
+/* Rakendub telefonidele (laius kuni 768px) või püstiasendis (portrait) ekraanidele */
+@media (max-width: 768px), (orientation: portrait) {
+    .kylgriba {
+        width: 140px;               /* Teeb külgriba telefonis kitsamaks */
+        margin-left: -140px;        /* Peidab kitsama külgriba täpselt oma laiuse võrra vasakule */
+        padding: 20px 8px;
+    }
+
+    .kylg_link {
+        font-size: 15px;
+    }
+}

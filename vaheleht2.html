@@ -1,51 +1,59 @@
 <!DOCTYPE html>
 
+<!-- Määrab, et lehe põhikeel on eesti keel (aitab brauseril ja ekraanilugejatel teksti õigesti mõista) -->
 <html lang="et">
 
-<!-- See on siis see p2is-->
 <head>
-<!-- UTF-8 aitab lehekyljel t2pit2hti lugeda-->
-<meta charset="UTF-8">
-<!-- Leht seab lehe laiuseks vaikimisi ekraani laiuse ja esmase suumitaseme 100% peale-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Minecraft Translate </title>
-<link rel="icon" type="image/x-icon" href="pildid/ikoon.png">
-<link rel="stylesheet" href="css vaheleht2.css">
+    <!-- Tähemärkide kodeering, et täpitähed (õ, ä, ö, ü) kuvataks korrektselt -->
+    <meta charset="UTF-8">
+    <!-- Kohandab lehe laiuse vastavalt seadme ekraanile (vajalik, et telefonivaade töötaks) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Minecraft Translate </title>
+    <!-- Brauseri vahelehe (tab'i) väike ikoon -->
+    <link rel="icon" type="image/x-icon" href="pildid/ikoon.png">
+    <!-- Ühendab selle HTML-faili kujundusfailiga (CSS) -->
+    <link rel="stylesheet" href="vaheleht2.css">
 </head>
 
 <body>
     <header class="header_taust">
-        <div class="logo"> </div>
+        <!-- Logo plokk, millele JavaScript lisab klikkimisel külgriba avamise/sulgemise funktsiooni (id="menüü_nupp") -->
+        <div class="logo" id="menüü_nupp"> </div>
         <nav class="nav-ala">
-            <a class="link" href="#">Koduleht</a>
-            <a class="link" href="#">Tutorial</a>
+            <!-- "../" viitab ühe kausta võrra ülespoole liikumisele -->
+            <a class="link" href="../pealeht.html">Koduleht</a>
+            <a class="link" href="../patrick.html">Dark Triad Opening</a>
         </nav>
     </header>
 
-<!-- Lehekülje sisu -->
+    <!-- Lehekülje põhisisu konteiner (hoiab külgriba ja sisuala kõrvuti) -->
     <div class="lehe_sisu">
-        <!-- külgriba -->
-        <aside class="kylgriba">
+        <!-- Peidetav külgriba (id="kylgriba" abil muudab JavaScript selle nähtavaks) -->
+        <aside id="kylgriba" class="kylgriba">
             <nav>
                 <ul>
-                    <li><a class="kylg_link" href="#">Kalkulaator</a></li>
-                    <li><a class="kylg_link" href="#">Selgitus</a></li>
-                    <li><a class="kylg_link" href="#">Allikad</a></li>
+                    <!-- Ankur-lingid (#nimi): viivad vajutades otse samal lehel asuva vastava id-ga pealkirjani -->
+                    <li><a class="kylg_link" href="#kalkulaator">Kalkulaator</a></li>
+                    <li><a class="kylg_link" href="#selgitus">Selgitus</a></li>
                 </ul>
             </nav>
         </aside>
 
         <main class="sisu">
-            <h1>Vahemaa kalkulaator</h1>
+            <!-- id="kalkulaator" on sihtpunkt külgriba lingile href="#kalkulaator" -->
+            <h1 id="kalkulaator">Vahemaa kalkulaator</h1>
 
             <div class="kaart vorm-osa">
+                <!-- onsubmit="return false;" keelab vormil lehte uuesti laadida, kui vajutatakse Enter-klahvi -->
                 <form id="kalkulaatorVorm" onsubmit="return false;">
                     <div class="punktid-rida">
-                        <!-- Punkt A -->
+                        <!-- Punkt A (Alguskoht) -->
                         <div class="punktid-tulp">
-                            <h2>Punkt A</h2>
+                            <h2>Alguskoht</h2>
                             <div class="input-rida">
+                                <!-- type="number" lubab sisestada ainult numbreid; id="x1" kaudu loeb JavaScript sisestatud väärtuse -->
                                 <input type="number" id="x1" class="mc-input" placeholder="X1" value="0">
+                                <!-- for="x1" seob sildi sisendväljaga (sildile klikkides aktiveerub vastav kast) -->
                                 <label for="x1">X1:</label>
                             </div>
                             <div class="input-rida">
@@ -58,9 +66,9 @@
                             </div>
                         </div>
                         
-                        <!-- Punkt B -->
+                        <!-- Punkt B (Sihtkoht) -->
                         <div class="punktid-tulp">
-                            <h2>Punkt B</h2>
+                            <h2>Sihtkoht</h2>
                             <div class="input-rida">
                                 <input type="number" id="x2" class="mc-input" placeholder="X2" value="800">
                                 <label for="x2">X2:</label>
@@ -77,6 +85,7 @@
                     </div>
 
                     <div class="nupp-konteiner">
+                        <!-- type="button" tagab, et nupp ei saadaks vormi ära ega värskendaks lehte, vaid käivitaks ainult JavaScripti -->
                         <button type="button" id="arvutaNupp" class="nupp">Arvuta vahemaa</button>
                     </div>
 
@@ -85,25 +94,33 @@
 
             <div class="kaart tulemused-osa">
                 <h2>Tulemused</h2>
+                <!-- <span> on tekstisisene kohatäitja: JavaScript asendab kriipsu ("-") arvutatud tulemusega vastava id järgi -->
                 <p>Kaugus Overworldis: <span id="overworldKaugus">-</span></p>
                 <p>Kaugus Netheris: <span id="netherKaugus">-</span></p>
                 
-                <p id="netherA">Punkti A Nether portaal: -</p>
-                <p id="netherB">Punkti B Nether portaal: -</p>
+                <!-- Nende lõikude kogu teksti kirjutab JavaScript arvutamisel üle -->
+                <p id="netherA">Alguskoha Nether portaal: -</p>
+                <p id="netherB">Sihtkoha Nether portaal: -</p>
                 
+                <!-- Siia lisab JavaScript dünaamiliselt teksti võidetud plokkide kohta -->
                 <p id="kokkuhoidTekst"></p>
             </div>
 
-            <h2>Selgitus</h2>
-            <p>Vahemaa kalkulaator arvutab kahe punkti vahelise kauguse Minecrafti Overworldis ja Netheris. Sisestage punktide A ja B koordinaadid ning vajutage "Arvuta vahemaa". Kalkulaator kuvab kauguse mõlemas dimensioonis ning näitab, kus asuvad vastavad Netheri portaalid.</p>
-            
+            <!-- id="selgitus" on sihtpunkt külgriba lingile href="#selgitus" -->
+            <h2 id="selgitus">Selgitus</h2>
 
+            <p>Minecraftis vastab üks plokk Netheris kaheksale plokile Overworldis, mistõttu on läbi Netheri liikumine parim viis pikkade vahemaade kiireks läbimiseks. See kalkulaator aitab sul hõlpsalt välja arvutada, kui kaugel kaks punkti teineteisest asuvad ning kui palju teekond teise dimensiooni kaudu lüheneb. </p>
+            <br>
+            <p>Alustamiseks sisesta alguspunkti (Punkt A) ja sihtkoha (Punkt B) koordinaadid ning vajuta nuppu "Arvuta vahemaa". Oma täpsed koordinaadid leiad mängus hõlpsalt F3-vaatest. </p>
+            <br>
+            <p>Tulemuste alt näed kohe vahemaad nii Overworldis kui ka Netheris. Lisaks arvutab kalkulaator välja täpsed koordinaadid, kuhu peaksid Netheris portaalid ehitama, et need sinu valitud kohtadega õigesti ühenduksid. </p>
+            <br>
+            <p> P.S. Kalkulaator kindlasti töötab Java 1.21.1 versiooni peal. Põhimõte säilib ka teistes versioonides, aga töökindlust sel ajahetkel me tagada ei saa. </p>
         </main>
 
-    <!-- JavaScripti faili kaasa haaramine -->
-    <script src="kalkulaator.js"></script>
+        <!-- Skript laetakse lehe lõpus, et kõik ülalolevad HTML-elemendid (inputid, nupud) oleksid enne käivitamist juba olemas -->
+        <script src="kalkulaator.js"></script>
     </div>
-    
 
 </body>
 
