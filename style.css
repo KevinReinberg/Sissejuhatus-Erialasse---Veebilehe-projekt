@@ -1,0 +1,333 @@
+/* =================================================================
+   LEHE ÜLDINE VORMISTUS JA FONDID
+   ================================================================ */
+
+/* Impordib välise Minecrafti-stiilis fondi (Minecraft-3) internetist */
+@import url('https://fonts.cdnfonts.com/css/minecraft-3');
+
+/* Määrab globaalsed muutujad (:root), mida saab kasutada kogu lehe stiilides */
+:root {
+    --text-color: #dddddd;                       /* Tavateksti (paragrahvide) hallikas värv */
+    --heading-color: #2da32d;                    /* Pealkirjade ja linkide roheline värv */
+    --border-block-color: #e1f3fa;               /* Kastide taustavärv (valkjas) */
+    --default-font: 'Minecraft';                 /* Standardne font, mida lehel kasutatakse */
+}
+
+/* Tärn (*) valib KÕIK lehe elemendid ja rakendab neile järgmised reeglid */
+* {
+    margin: 0;                                     /* Eemaldab elementide ümber olevad vaikimisi vahed */
+    padding: 0;                                    /* Eemaldab elementide sisemised vahed */
+    box-sizing: border-box;                        /* Tagab, et ääred ja siseruum arvestatakse elementide laiuse sisse */
+    text-shadow: 2px 2px 0px #1e1e1e;            /* Lisab igale tekstile iseloomuliku musta varju */
+}
+
+/* HTML elemendi seadistused tervele dokumendile */
+html {
+    font-family: var(--default-font);              /* Määrab lehe üldiseks fondiks Minecrafti fondi */
+    color: var(--text-color);                      /* Määrab tekstile vaikimisi värvi */
+    min-height: 100%;                              /* Tagab, et html katab vähemalt 100% kõrgusest */
+    background-image: url('vaheleht_2/pildid/kivi.jpg'); /* Määrab lehe taustaks kivi tekstuuriga pildi */
+    background-repeat: repeat;                     /* Kordab taustapilti mustrina üle terve lehe */
+    background-size: 128px 128px;                  /* Määrab korduva taustapildi suuruseks 128x128 pikslit */
+    image-rendering: pixelated;                  /* Hoiab taustapildi terava ja pikslilisena (ei tee uduseks) */
+}
+
+/* Lehe keha (body) seadistused */
+body {
+    min-height: 100vh;                           /* Tagab keha kõrguseks vähemalt 100% ekraani kõrgusest */
+    display: flex;                                 /* Muudab keha paindlikuks Flexbox konteineriks */
+    flex-direction: column;                        /* Asetab sisuplokid üksteise alla (veerguna) */
+    position: relative;                          /* Võimaldab elemente selle suhtes (absolute) paigutada */
+}
+
+
+/* =================================================================
+   PÄIS (HEADER) JA NAVIGEERIMINE
+   ================================================================ */
+
+/* Lehe ülemise päise (header) kujundus */
+header {
+    background-image: url('vaheleht_2/pildid/muru.png'); /* Paneb päisi taustaks Minecrafti muru pildi */
+    background-repeat: repeat-x;                   /* Kordab muru pilti ainult horisontaalselt (laiusesse) */
+    background-size: auto 100%;                    /* Venitab muru pildi kõrguse täpselt päise järgi */
+    min-height: 110px;                             /* Määrab päise minimaalseks kõrguseks 110 pikslit */
+    border-bottom: 4px solid #2b2b2b;            /* Lisab päise alla tumeda 4-pikslise ääre */
+    display: flex;                                 /* Kasutab Flexboxi sisu paigutamiseks */
+    align-items: center;                           /* Joondab sisu vertikaalselt keskele */
+    justify-content: center;                       /* Joondab sisu horisontaalselt keskele */
+    padding: 20px 320px 20px 290px;                /* Lisab päise sisse tühjad ruumid (ülevalt, paremalt, alt, vasakult) */
+}
+
+/* Navigatsiooniriba linkide ümbrise kujundus */
+.nav_lingid {
+    width: min(1000px, 100%);                     /* Määrab ribale maksimaalseks laiuseks 1000px */
+    display: flex;                                 /* Muudab elemendi Flexboxiks */
+    align-items: center;                           /* Joondab lingid vertikaalselt keskele */
+    gap: 2em;                                      /* Jätab linkide vahele kindla vahe (2 em) */
+    justify-content: flex-end;                     /* Paigutab lingid parempoolsesse äärde */
+}
+
+/* Kõigi lehe linkide (<a>) üldine stiil */
+a {
+    text-decoration: none;                         /* Eemaldab linkidelt vaikimisi alljoone */
+    color: var(--heading-color);                   /* Määrab lingi värviks rohelise (muutujast) */
+}
+
+/* Tutorial menüü linkide spetsiifiline värv */
+.tutorial a {
+    color: var(--heading-color);                   /* Tagab, et tutoriali lingid on rohelised */
+}
+
+
+/* =================================================================
+   PEALKIRJAD JA VASAKPOOLNE TUTORIALI MENÜÜ
+   ================================================================ */
+
+/* Suure pealkirja (h1) kujundus */
+h1 {
+    margin: 0;                                     /* Eemaldab pealkirjal vahed */
+    text-align: center;                            /* Joondab teksti keskele */
+    font-size: 28px;                               /* Määrab kirja suuruseks 28 pikslit */
+    color: #ffffff;                                /* Määrab teksti värviks valge */
+    text-shadow: 3px 3px 0px #1e1e1e;            /* Lisab pealkirjale tugeva musta varju */
+}
+
+/* Vasakpoolse nupumenüü konteiner */
+.tutorial {
+    position: absolute;                            /* Paigutab menüü vabalt ekraanile (abs-koordinaatidega) */
+    top: 150px;                                    /* Asetab menüü lehe ülaosast 150 pikslit allapoole */
+    left: 20px;                                    /* Asetab menüü vasakust servast 20 pikslit paremale */
+    list-style: none;                              /* Eemaldab listi punktid (täpid) */
+    display: flex;                                 /* Muudab Flexbox konteineriks */
+    flex-direction: column;                        /* Asetab nupud üksteise alla veerguna */
+}
+
+/* Sisemine nimekirja konteiner, mis hoiab nuppe */
+.tutorial ul {
+    display: flex;                                 
+    flex-direction: column;                        
+    gap: 10px;                                     
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Iga nupu element menüü nimekirjas */
+.tutorial a {
+    background-image: url('vaheleht_2/pildid/nupp.png'); /* Määrab nupu taustaks Minecrafti nupu pildi */
+    background-size: 100% 100%;                    /* Venitab nupu pildi täpselt elemendi suuruseks */
+    background-position: center;                   /* Keskendab nupu pildi */
+    background-repeat: no-repeat;                  /* Keelab pildi kordumise */
+    width: 350px;                                  /* Määrab nupu laiuseks 350 pikslit */
+    height: 50px;                                  /* Määrab nupu kõrguseks 50 pikslit */
+    display: flex;                                 /* Muudab Flexboxiks */
+    align-items: center;                           /* Joondab sisu vertikaalselt keskele */
+    justify-content: center;                       /* Joondab sisu horisontaalselt keskele */
+    text-decoration: none;                         /* Eemaldab alljoone */
+    font-family: var(--default-font);              /* Määrab Minecrafti fondi */
+    align-items: center;                           /* Joondab teksti keskele */
+    padding-left: 15px;                            /* Nihutab teksti vasakust servast veidi sissepoole */
+    box-sizing: border-box;                        /* Arvutab paddingu laiuse sisse */
+    gap: 10px;                                     /* Hoiab nuppude vahel ühtlast vahet */
+}
+
+.tutorial a:hover {
+    filter: brightness(1.1);                       /* Teeb nupu veidi heledamaks */
+}
+
+/* =================================================================
+   OTSINGURIBA JA OTSINGUTULEMUSED
+   ================================================================ */
+
+/* Otsinguriba tekstivälja (<input>) kujundus ja asukoht */
+.otsing input {
+    position: absolute;                            /* Paigutab otsinguriba vabalt ekraanile */
+    right: 20px;                                   /* Asetab paremast servast 20 pikslit vasakule */
+    top: 15px;                                     /* Asetab ülaosast 15 pikslit allapoole */
+    width: 280px;                                  /* Määrab välja laiuseks 280 pikslit */
+    height: 50px;                                  /* Määrab välja kõrguseks 50 pikslit */
+    padding: 5px 10px;                             /* Lisab sisemised vahed */
+    background-image: url('vaheleht_2/pildid/nupp.png'); /* Paneb välja taustaks Minecrafti nupu */
+    background-size: 100% 100%;                    /* Venitab pildi sobivaks */
+    background-position: center;                   /* Keskendab pildi */
+    background-repeat: no-repeat;                  /* Keelab pildi kordumise */
+    border: none;                                  /* Eemaldab tavapärase äärise */
+    font-family: var(--default-font);              /* Määrab fondi */
+    font-size: medium;                             /* Määrab teksti suuruseks keskmise */
+    color: #fff;                                   /* Määrab sisestatava teksti värviks valge */
+}
+
+/* Otsinguriba sees oleva vihjete (placeholder) teksti värv */
+input::placeholder {
+    color: rgb(197, 196, 196);                     /* Helehall värv vihjete jaoks */
+}
+
+/* Otsingutulemuste rippmenüü konteiner */
+.otsing {
+    position: relative;                            /* Määrab positsiooni alamainete jaoks */
+}
+
+/* Rippmenüü nimekirja stiil ja asukoht */
+.otsing-tulemused {
+    position: fixed;                               /* Fikseerib tulemused ekraanile */
+    right: 20px;                                   /* Joondab paremast servast */
+    top: 205px;                                    /* Asetab lehel kõrgusele 205px */
+    width: 280px;                                  /* Laius on sama mis otsinguribal */
+    background-color: rgba(0, 0, 0, 0.9);          /* Tume peaaegu läbipaistev taust */
+    list-style: none;                              /* Eemaldab listi punktid */
+    padding: 0;                                    /* Nullib siseruumid */
+    margin: 0;                                     /* Nullib välised vahed */
+    display: none;                                 /* Vaikimisi peidetud (muutub nähtavaks JavaScriptiga) */
+    z-index: 100;                                  /* Tagab, et tulemused on teiste elementide peal */
+    border: 1px solid #555;                        /* Hallikas ääris */
+}
+
+/* Tulemuste nimekirja linkide stiil */
+.otsing-tulemused li a {
+    display: block;                                /* Teeb lingist plokk-elemendi */
+    padding: 10px;                                 /* Lisab siseruumi */
+    color: #fff;                                   /* Valge tekst */
+    font-size: small;                              /* Väiksem tekstisuurus */
+    text-decoration: none;                         /* Eemaldab alljoone */
+}
+
+/* Hiire viimisel tulemuse peale (:hover) */
+.otsing-tulemused li a:hover {
+    background-color: #228fe8;                     /* Muudab tausta siniseks */
+}
+
+
+/* =================================================================
+   JALUS (FOOTER) JA ESITÕSTETUD TEKST
+   ================================================================ */
+
+/* Lehe allservas oleva jaluse (footer) kujundus */
+footer {
+    position: fixed;                               /* Fikseerib jaluse ekraani alla paigale */
+    bottom: 20px;                                  /* Kaugus lehe alaosast 20 pikslit */
+    right: 20px;                                   /* Kaugus lehe paremast servast 20 pikslit */
+    color: #80c0ff;                                /* Helesinine tekst paremaks loetavuseks */
+    text-shadow: 2px 2px 0px #1e1e1e;            /* Must vari teksti taga */
+    font-family: var(--default-font);              /* Minecrafti font */
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Paksu (bold / <b>) teksti spetsiifiline värv */
+b {
+    color: #7cfc00;                                /* Ere heleroheline värv */
+}
+
+
+/* =================================================================
+   GITHUB COMMIT'IDE / VIIMASTE MUUDATUSTE PLOKK
+   ================================================================ */
+
+/* Viimaste muudatuste põhikonteiner */
+.muudatused {
+    display: flex;                                 /* Flexbox paigutus */
+    flex-direction: column;                        /* Elemendid on üksteise all veerus */
+    align-items: center;                           /* Joondab sisu keskele */
+    gap: 10px;                                     /* Elementide vahe on 10 pikslit */
+    margin: 40px auto 0 auto;                      /* Hoiab kasti keskel (auto) ja annab ülevalt ruumi (40px) */
+    max-width: 600px;                              /* Maksimaalne laius 600 pikslit */
+    z-index: 10;                                   /* Hoiab teiste elementide peal */
+}
+
+/* Pealkiri "Viimased muudatused:", mis on kujundatud nupuna */
+.muudatused > a {
+    background-image: url('vaheleht_2/pildid/nupp.png'); /* Nupu taustapilt */
+    background-size: 100% 100%;                    /* Venitab pildi sobivaks */
+    background-repeat: no-repeat;                  /* Ei korda pilti */
+    background-position: center;                   /* Keskendab pildi */
+    width: 450px;                                  /* Nupu laius 450px */
+    height: 50px;                                  /* Nupu kõrgus 50px */
+    display: flex;                                 /* Flexbox */
+    align-items: center;                           /* Vertikaalselt keskel */
+    justify-content: center;                       /* Horisontaalselt keskel */
+    font-size: 20px;                               /* Teksti suurus 20px */
+    color: var(--heading-color);                   /* Roheline tekstivärv */
+    text-shadow: 2px 2px 0px #1e1e1e;            /* Must vari tekstil */
+    text-decoration: none;                         /* Eemaldab alljoone */
+}
+
+/* Hiire viimisel pealkirja-nupu peale */
+.muudatused > a:hover {
+    filter: brightness(1.1);                       /* Teeb nupu veidi heledamaks */
+}
+
+/* Muudatuste nimekirja (ul) stiil */
+.muudatused ul {
+    list-style: none;                              /* Eemaldab listi punktid */
+    padding: 0;                                    /* Nullib paddingu */
+    margin: 0;                                     /* Nullib marginid */
+    display: flex;                                 /* Flexbox */
+    flex-direction: column;                        /* Veerus */
+    gap: 10px;                                     /* Vahe ridade vahel 10px */
+    width: 100%;                                   /* Täislaius */
+    align-items: center;                           /* Keskel */
+}
+
+/* Iga üksik commit'i rida/nupp nimekirjas (li) */
+.muudatused li {
+    background-image: url('vaheleht_2/pildid/nupp.png'); /* Nupu taust */
+    background-size: 100% 100%;                    /* Venitab pildi */
+    background-repeat: no-repeat;                  /* Ei korda */
+    background-position: center;                   /* Keskel */
+    width: 450px;                                  /* Laius 450px */
+    height: 50px;                                  /* Kõrgus 50px */
+    display: flex;                                 /* Flexbox */
+    align-items: center;                           /* Vertikaalselt keskel */
+    justify-content: center;                       /* Horisontaalselt keskel */
+    padding: 0 15px;                               /* Siseruum servades */
+    font-size: 14px;                               /* Baasfonti suurus */
+    color: #ffffff;                                /* Valge tekst */
+    text-shadow: 1px 1px 0px #1e1e1e;            /* Must vari tekstil */
+    overflow: hidden;                              /* Peidab elementide piiridest välja ulatuva sisu */
+}
+
+/* Commit'i nupu sees olev link ja teksti kärpimise (ellipsis) loogika */
+.muudatused li a {
+    font-size: 18px;                               /* Teksti suurus 18px */
+    color: #ffffff;                                /* Valge tekst */
+    text-decoration: none;                         /* Alljoont pole */
+    max-width: 100%;                               /* Ei ületa nupu laiust */
+    white-space: nowrap;                           /* Hoiab teksti rangelt ühel real (ei luba reavahetust) */
+    overflow: hidden;                              /* Peidab liigse teksti */
+    text-overflow: ellipsis;                       /* Lisab liiga pika teksti lõppu automaatselt kolm punkti (...) */
+    display: block;                                /* Plokk-element (vajalik ellipsis toimimiseks) */
+}
+
+/* Hiire viimisel commit'i nupu peale */
+.muudatused li a:hover {
+    color: #ffffa0;                               /* Muudab teksti kollakaks */
+}
+
+/* Erisäte laadimistekstile ("Laen viimaseid muudatusi...") */
+.muudatused li.laeb {
+    color: #f2f2f2;                               /* Helehall tekst */
+    font-style: italic;                            /* Kaldkiri */
+}
+
+.allikad a {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 17px;
+    background-image: url('vaheleht_2/pildid/nupp.png'); /* Nupu taust */
+    background-size: 100% 100%;                    /* Venitab pildi */
+    background-repeat: no-repeat;                  /* Ei korda */
+    background-position: center;                   /* Keskel */
+    width: 280px;                                  /* Määrab välja laiuseks 280 pikslit */
+    height: 50px;                                  /* Kõrgus 50px */
+    display: flex;                                 /* Flexbox */
+    align-items: center;                           /* Vertikaalselt keskel */
+    justify-content: center;                       /* Horisontaalselt keskel */
+    padding: 0 15px;                               /* Siseruum servades */
+}
+
+.allikad a:hover {
+    filter: brightness(1.1);                       /* Teeb nupu veidi heledamaks */
+}
