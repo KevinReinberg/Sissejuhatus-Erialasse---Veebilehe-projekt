@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const commitUrl = commitObj.html_url;
 
                 /* Lühendab pika commit'i sõnumi, et see mahuks nupu sisse */
-                const lühikeSõnum = sõnum.length > 20 ? sõnum.substring(0, 17) + '...' : sõnum;
+                const lühikeSõnum = sõnum.length > 18 ? sõnum.substring(0, 15) + '...' : sõnum;
 
                 const li = document.createElement('li');
                 li.className = 'nupp';

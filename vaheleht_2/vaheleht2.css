@@ -403,6 +403,12 @@ h2 {
         font-size: 16px;
     }
 
+    .kylg_link {
+        font-size: 14px;
+        word-break: normal;             /* Keelab sõnade keskelt poolitamise */
+        overflow-wrap: normal;
+    }
+
     .nupp {
         width: 100%;
         max-width: var(--button-width);
@@ -412,6 +418,13 @@ h2 {
 
 /* Rakendub telefonidele (laius kuni 768px) või püstiasendis (portrait) ekraanidele */
 @media (max-width: 768px), (orientation: portrait) {
+    
+    .sammas { width: 12%; }
+    .parem { width: 88%; }
+    .riba { height: 48px; }
+    .sisu { padding: 12px; }
+    .tekst { padding: 16px; }
+
     body {
         padding-top: var(--mobile-header-height); /* Kohandab ülemise vahe mobiilipäise kõrgusega */
     }
@@ -433,7 +446,7 @@ h2 {
     }
 
     .link {
-        font-size: 13px;
+        font-size: 14px;
         padding: 8px 12px;
     }
 
@@ -442,11 +455,12 @@ h2 {
         height: calc(100vh - var(--mobile-header-height));
         width: 140px;                   /* Teeb külgriba telefonis kitsamaks */
         margin-left: -140px;            /* Peidab kitsama külgriba täpselt oma laiuse võrra vasakule */
-        padding: 20px 8px;
+        padding: 10px 8px;
     }
 
     .kylg_link {
-        font-size: 15px;
+        font-size: 14px;                
+        padding: 12px 6px;
     }
 
     h1,
