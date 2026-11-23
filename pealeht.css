@@ -1,0 +1,354 @@
+/* ====================================================================================
+   1. ROOT-MUUTUJAD, LÄHTESTAMINE (RESET) JA ÜLDSTIILID
+   ================================================================================    
+   See sektsioon määrab lehe üldised baasväärtused, fondid, värvimuutujad ja nullib 
+   brauseri vaikimisi varud (margin/padding).
+   ================================================================================ */
+
+/* Imporditakse Minecrafti stiilis kirjatüüp välisallikast */
+@import url('https://fonts.cdnfonts.com/css/minecraft-3');
+
+/* Globaalsed CSS-muutujad lehe ühtseks kujundamiseks ja lihtsaks muutmiseks */
+:root {
+    --text-color: #dddddd;          /* Põhiteksti hele hall värv */
+    --heading-color: #2da32d;       /* Pealkirjade ja nuppude roheline värv */
+    --accent-color: #7cfc00;        /* Esiletõstetud teksti ere roheline toon */
+    --link-color: #80c0ff;          /* Jaluse linkide helesinine värv */
+    --white: #ffffff;               /* Puhas valge värv tekstidele */
+    --shadow-color: #1e1e1e;        /* Tekstivarjude tume toon */
+
+    --default-font: 'Minecraft', sans-serif; /* Vaikimisi kirjatüüp */
+    --standart-gap: 10px;           /* Standardne vahe elementide ja ridade vahel */
+    --standart-font-size: 20px;     /* Standardne teksti suurus */
+    --top-offset: 170px;            /* Ühtne kaugus lehe ülaosast peamistele plokkidele */
+    --button-width: 400px;          /* Nuppude ja sisendväljade kindel laius */
+    --button-height: 60px;          /* Nuppude ja sisendväljade kindel kõrgus */
+}
+
+/* Universaalne selektor: eemaldab kõikidelt elementidelt vahed ja määrab kasti arvutuse (border-box) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-shadow: 2px 2px 0px var(--shadow-color); /* Annab tekstile klassikalise Minecrafti varju */
+}
+
+/* HTML elemendi seadistused: määrab baasfondi, teksti värvi ja korduva tekstuurse tausta */
+html {
+    font-family: var(--default-font);
+    color: var(--text-color);
+    background: url('vaheleht_2/pildid/kivi.jpg') repeat 0 0 / 128px 128px;
+    image-rendering: pixelated; /* Tagab, et taustapildi pikslid jäävad teravaks */
+}
+
+/* Keha (body) seadistused: tagab, et sisu täidab alati vähemalt terve ekraani kõrguse */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 90px; /* Jätab allapoole ruumi jalusele (footer) */
+}
+
+/* Üldine lingi (<a>) elementide stiil väljaspool spetsiaalseid plokke */
+a {
+    text-decoration: none;      /* Eemaldab linkide alt joone */
+    color: var(--heading-color);
+}
+
+
+/* ====================================================================================
+   2. KORDUVATE ELEMENTIDE VORMISTUS (NUPUD)
+   ================================================================================    
+   Siin definitsioonis luuakse korduv "nupp" klass, mida kasutavad nii lingid,
+   otsinguriba kui ka muudatuste nimekirja elemendid.
+   ================================================================================ */
+
+/* Klass .nupp tagab ühesuguse kujunduse ja suuruse kõigile nupp-elementidele */
+.nupp {
+    display: flex;              /* Kasutab flexboxi sisu keskele joondamiseks */
+    align-items: center;        /* Joondab teksti vertikaalselt keskele */
+    justify-content: center;    /* Joondab teksti horisontaalselt keskele */
+    width: var(--button-width); /* Nupu kindel laius muutujast */
+    height: var(--button-height); /* Nupu kindel kõrgus muutujast */
+    border: none;               /* Eemaldab vaikimisi äärised */
+    font-size: var(--standart-font-size); /* Teksti suurus nupul */
+    color: var(--heading-color);/* Teksti värv muutujast */
+    background: url('vaheleht_2/pildid/nupp.png') no-repeat center / 100% 100%; /* Nupu taustapilt */
+}
+
+/* Hover-efekt: teeb nupu hiirega peale minnes veidi heledamaks */
+.nupp:hover {
+    filter: brightness(1.1);
+}
+
+
+/* ====================================================================================
+   3. PÄIS (HEADER)
+   ================================================================================    
+   Määrab lehe ülaosas asuva päise kujunduse, kõrguse ja muru-taustapildi.
+   ================================================================================ */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;          /* Päise minimaalne kõrgus */
+    padding: 20px;              /* Sisemised vahed servadest */
+    border-bottom: 4px solid #2b2b2b; /* Tume äär päise all */
+    background: url('vaheleht_2/pildid/muru.png') repeat-x 0 0 / auto 100%; /* Korduv muru tekstuur */
+}
+
+/* Päise pealkirja (h1) stiil */
+h1 {
+    font-size: 32px;
+    color: var(--white);
+    text-shadow: 3px 3px 0px var(--shadow-color); /* Suurem vari pealkirjale */
+}
+
+/* Esiletõstetud teksti (<b>) värv pealkirjas */
+b {
+    color: var(--accent-color);
+}
+
+
+/* ====================================================================================
+   4. ALLIKATE LEHE SISU (allikad.html)
+   ================================================================================ */
+
+/* Allikate lehe üldine paigutus */
+.allikate-sisu {
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 30px 24px;
+    max-width: 900px;
+}
+
+/* Ühe lehe allikate plokk */
+.allika-plokk {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Lehe pealkiri (roheline ja allajoonitud) */
+.leht {
+    display: inline-block;
+    width: fit-content;
+    text-decoration: underline;
+    font-size: var(--standart-font-size);
+    color: var(--heading-color);
+}
+
+.leht:hover {
+    filter: brightness(1.15);
+}
+
+/* Materjali selgitus (valge) + link (sinine ja allajoonitud) */
+.link {
+    padding-left: 16px;
+    font-size: var(--standart-font-size);
+    line-height: 1.6;
+    color: var(--white);
+}
+
+.link p {
+    color: var(--white);
+}
+
+.link a {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;    
+}
+
+.link a:hover {
+    filter: brightness(1.15);
+}
+
+/* ====================================================================================
+   5. PEAMINE SISU JA PAIGUTUS (MAIN & ABSOLUUTSED POSITSIOONID)
+   ================================================================================    
+   See sektsioon positsioneerib peamised plokid (tutorialid, otsing, muudatused, 
+   allikad) täpselt samale tasemele lehel.
+   ================================================================================ */
+
+/* Kõik kolm ülemist sisuplokki algavad samalt kõrguselt */
+.tutorial,
+.otsing input,
+.muudatused {
+    position: absolute;         /* Määrab kindla asukoha koordinaatide järgi */
+    top: var(--top-offset);     /* Ühtne kaugus lehe ülaosast */
+}
+
+/* Paremal pool asuv otsinguriba sisendväli */
+.otsing input {
+    right: 20px;                /* Kaugus lehe paremast servast */
+    padding-left: 10px;         /* Teksti siseveerg vasakult */
+    color: var(--white);
+    font-family: var(--default-font); /* Tagab Minecrafti fondi ka sisestatud tekstile */
+    font-size: var(--standart-font-size); /* Ühtlustab kirja suuruse nuppudega */
+}
+
+/* Otsinguriba kohatäite (placeholder) tekstivärv ja font */
+.otsing input::placeholder {
+    color: rgb(197, 196, 196);
+    font-family: var(--default-font); /* Tagab sama fondi ka placeholder-tekstis */
+    font-size: var(--standart-font-size);
+}
+
+/* Vasakul pool asuv tutorialite / õpetuste nimekiri */
+.tutorial {
+    left: 20px;                 /* Kaugus lehe vasakust servast */
+}
+
+/* Ühine vertikaalne veerg ja vahed nii õpetuste kui ka muudatuste nimekirjadele */
+.tutorial ul,
+.muudatused,
+.muudatused ul {
+    display: flex;
+    flex-direction: column;     /* Paigutab elemendid üksteise alla */
+    gap: var(--standart-gap);   /* Ühtlane vahe elementide vahel */
+    list-style: none;           /* Eemaldab nimekirja täpikesed */
+}
+
+/* Keskel asuv GitHubi viimaste muudatuste plokk */
+.muudatused {
+    left: 50%;                  /* Paigutab ploki horisontaalselt keskele */
+    transform: translateX(-50%);/* Nihutab plokki poole oma laiuse võrra tagasi */
+    align-items: center;        /* Joondab ploki sisu keskele */
+}
+
+.muudatused ul {
+    align-items: center;
+    width: 100%;
+}
+
+/* Paremal pool asuv otsinguriba sisendväli */
+.otsing input {
+    right: 20px;                /* Kaugus lehe paremast servast */
+    padding-left: 10px;         /* Teksti siseveerg vasakult */
+    color: var(--white);
+}
+
+/* Otsinguriba kohatäite (placeholder) tekstivärv */
+.otsing input::placeholder {
+    color: rgb(197, 196, 196);
+}
+
+/* Lisab nimekirja elementidele külgmised sisevahed, et tekst ei puutuks vastu servi */
+.muudatused li.nupp {
+    padding: 0 15px;
+}
+
+/* Tagab, et nupu sees olev link katab terve nupu ja pikk tekst lõigatakse kolme punktiga */
+.muudatused li.nupp a {
+    color: var(--white);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;        /* Keelab teksti murdmise uuele reale */
+    overflow: hidden;           /* Peidab üle ääre ulatuva teksti */
+    text-overflow: ellipsis;    /* Lisab pikale tekstile kolm punkti (...) */
+    padding: 0 15px;
+}
+
+/* Laadimisoleku ja veateate tekst nupu sees */
+.muudatused li.nupp.laeb {
+    color: #f2f2f2;
+    font-style: italic;
+}
+
+/* Allikate nupu asukoht lehe vasakus allnurgas */
+.allikad {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+}
+
+
+/* ====================================================================================
+   6. JALUS (FOOTER)
+   ================================================================================    
+   Määrab lehe all paremas nurgas asuvate lisalinkide (GitHub, About US, UT.EE) asukoha.
+   ================================================================================ */
+
+footer {
+    position: fixed;            /* Hoiab jaluse alati paigal ekraani suhtes */
+    bottom: 20px;               /* Kaugus alumisest servast */
+    right: 20px;                /* Kaugus paremast servast */
+    font-size: var(--standart-font-size);
+}
+
+/* Jaluse linkide rühmitus */
+.nav_lingid {
+    display: flex;
+    gap: 2em;                   /* Vahe linkide vahel */
+}
+
+footer a {
+    color: var(--link-color);   /* Helesinine linkide värv muutujast */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Joondab alla hiirega peale minnes */
+}
+
+
+/* ====================================================================================
+   7. RESPONSIIVNE DISAIN (MOBIILSEADMED JA KITSAD EKRAANID)
+   ================================================================================    
+   Reageerib, kui ekraani laius on väiksem kui 1100px. Muudab absolutsed asukohad
+   staatilisteks, et elemendid ei hakkaks üksteise peale kattuma.
+   ================================================================================ */
+
+@media screen and (max-width: 1100px) {
+    /* Lubab päise sisul väiksel ekraanil üksteise alla murduda */
+    header {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    /* Muudab absolutsed ja fikseeritud positsioonid staatilisteks, et mobiilis oleks loogiline järjekord */
+    .tutorial,
+    .otsing,
+    .otsing input,
+    .muudatused,
+    .allikad,
+    footer {
+        position: static;
+        transform: none;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    /* Ühtlustab kõik nupud ja sisendväljad mobiilivaates võrdseks (90% ekraani laiune, max 400px) */
+    .nupp,
+    .otsing input,
+    .muudatused > a,
+    .muudatused li.nupp {
+        width: 90vw;
+        max-width: var(--button-width);
+    }
+
+    /* Muudab õpetuste lingid telefonis veidi väiksemaks */
+    .tutorial a,
+    .tutorial li a {
+        font-size: 16px;
+    }
+
+    /* Suurendab alumist vahet õpetuste ja otsingu järel mobiilivaates */
+    .tutorial,
+    .otsing {
+        margin-bottom: 20px;
+    }
+}
