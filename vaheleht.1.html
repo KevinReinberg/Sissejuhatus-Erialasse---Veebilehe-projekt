@@ -7,6 +7,28 @@
     <link rel="stylesheet" href="stiil.css">
 </head>
 <body>
+    <header class="header_taust">
+        <!-- Logo plokk, millele JavaScript lisab klikkimisel külgriba avamise/sulgemise funktsiooni (id="menüü_nupp") -->
+        <div class="logo" id="menüü_nupp"> </div>
+        <nav class="nav-ala">
+            <!-- "../" viitab ühe kausta võrra ülespoole liikumisele -->
+            <a class="link" href="pealeht.html">Koduleht</a>
+            <a class="link" href="vaheleht_2/vaheleht2.html">Vahemaa Kalkulaator</a>
+        </nav>
+    </header>s
+
+    <!-- Peidetav külgriba (id="kylgriba" abil muudab JavaScript selle nähtavaks) -->
+    <aside id="kylgriba" class="kylgriba">
+        <nav>
+            <ul>
+            <!-- Ankur-lingid (#nimi): viivad vajutades otse samal lehel asuva vastava id-ga pealkirjani -->
+                <li><a class="kylg_link" href="#Kavatsus">Kavatsus</a></li>
+                <li><a class="kylg_link" href="#Korraldus">Korraldus</a></li>
+                <li><a class="kylg_link" href="#Kontroll">Kontroll</a></li>
+            </ul>
+        </nav>
+    </aside>
+
     <div class="leht">
         <div class="sammas" aria-hidden="true"></div>
 
@@ -16,7 +38,7 @@
 
             <div class="sisu">
                 <div class="tekst">
-                    <h2>Kavatsus</h2>
+                    <h2 id="Kavatsus">Kavatsus</h2>
 
                     <h3>1. Tee töö ära</h3>
                     <p>
@@ -92,7 +114,7 @@
                     Hoia ülejäänud raud lao tagumises reas.
                     </p>
 
-                    <h2>Korraldus</h2>
+                    <h2 id="Korraldus">Korraldus</h2>
 
                     <h3>7. Ehita ühendused oma keskuse ümber</h3>
                     <p>
@@ -132,7 +154,7 @@
                     Vali enda kabinetile kõige kallim uks.
                     </p>
 
-                    <h2>Kontroll</h2>
+                    <h2 id="Kontroll">Kontroll</h2>
 
                     <h3>10. Hoia oma vara enda käes</h3>
                     <p>
@@ -175,11 +197,12 @@
 
                     <button id="kopeeri" type="button">Kopeeri lõik</button>
 
-                    <p><a href="index.html">Tagasi avalehele</a></p>
+                    <p><a href="pealeht.html">Tagasi avalehele</a></p>
                 </div>
             </div>
         </div>
     </div>
     <script src="kopeerimine.js"></script>
+    <script src="kylgriba.js"></script>
 </body>
 </html>
