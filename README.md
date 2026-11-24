@@ -26,7 +26,7 @@ Rühmatöö normid **säilivad**, muutusi pole lisada.
 **Ülevaade praeguse veebilehe funktsioonalsusest:** 
 Praegu on *2 vahelehe* ja *pealeht* ning ka *allikate leht*
 
-**Pealehelel** on *otsingu riba* ja *"viimased muudatused"*, mis JS skripti kaudu võtab meie kommitide sõnumid GitHubist ning paneb neid pealehele.
+**Pealehelel** on *otsingu riba*(otsib tutoriali nimes esinevate tähtede järgi) ja *"viimased muudatused"*, mis JS skripti kaudu võtab meie kommitide sõnumid GitHubist ning paneb neid pealehele.
 
 **"Dark Triad Opening"** lehel saab *kopeerida lehe sisu teksti osade kaupa*.
 
