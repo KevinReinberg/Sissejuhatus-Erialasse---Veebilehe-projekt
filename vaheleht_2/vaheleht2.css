@@ -159,131 +159,6 @@ p {
 
 
 /* ====================================================================================
-   3. PÄIS (HEADER) JA NAVIGATSIOON
-   ================================================================================ */
-
-.header_taust {
-    position: fixed;                    /* Kinnitab päise tausta ja nupud kerimisel ekraani ülaserva */
-    top: 0;                             /* Paigutab päise täpselt ekraani ülemisse serva */
-    left: 0;                            /* Paigutab päise täpselt ekraani vasakusse serva */
-    width: 100%;                        /* Venitab päise üle kogu ekraani laiuse */
-    z-index: 30;                        /* Hoiab päise alati külgriba ja põhisisu peal */
-    height: var(--header-height);       /* 100px kivimüüri rida + 4px alumine äärisjoon ilma tühja vaheta */
-    padding: 0 20px;
-    border-bottom: 4px solid #2b2b2b;
-    background-image: url("pildid/kivim.jpg");
-    background-repeat: repeat-x;        /* Kordab taustapilti ainult horisontaalselt (vasakult paremale) */
-    background-position: top left;
-    background-size: 100px 100px;
-    image-rendering: pixelated;
-    display: flex;                      /* Paigutab logo ja lingid kõrvuti ühele reale */
-    align-items: center;                /* Joondab logo ja lingid vertikaalselt rea keskele */
-    gap: 40px;                          /* Jätab logo ja linkide vahele 40px ruumi */
-}
-
-.logo {
-    background: url("pildid/ikoon.png") no-repeat center / contain; /* "contain" mahutab terve ikooni kasti sisse ilma lõikamata */
-    height: 60px;
-    width: 60px;
-    flex-shrink: 0;                     /* Keelab logol kitsal ekraanil väiksemaks kokku suruda */
-    cursor: pointer;                    /* Näitab, et logo (menüü nupp) on klõpsatav */
-}
-
-/* Keskmine veerg ehk linkide ala */
-.nav-ala {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;                    /* Lubab linkidel vajadusel järgmisele reale murduda */
-    gap: 20px;
-}
-
-.link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--heading-color);
-    text-decoration: none;
-    font-size: 18px;
-    padding: 12px 24px;
-    text-align: center;
-    white-space: nowrap;                /* Keelab nupu tekstil mitmele reale murduda */
-    background: url("pildid/nupp.png") no-repeat center / 100% 100%;
-    cursor: pointer;
-    border: none;
-}
-
-.link:hover {
-    filter: brightness(1.1);
-}
-
-
-/* ====================================================================================
-   4. LEHE PÕHIOSA JA KÜLGRIBA
-   ================================================================================ */
-
-.lehe_sisu {
-    display: flex;                      /* Paigutab külgriba ja põhisisu kõrvuti */
-    flex: 1;                            /* Venitab sisuala nii, et see täidaks kogu vaba ruumi päise all */
-    min-height: calc(100vh - var(--header-height)); /* Arvutab kõrguse: terve ekraan miinus päis */
-}
-
-/* Külgriba: liigub koos kasutajaga kerimisel ja libiseb vasakult sisse/välja */
-.kylgriba {
-    position: fixed;                    /* Kinnitab külgriba ekraani vasakusse serva nii, et see liigub kerimisel kaasa */
-    top: var(--header-height);          /* Algab täpselt fikseeritud päise all */
-    left: 0;
-    height: calc(100vh - var(--header-height)); /* Täidab ekraani kõrguse päise allservast alumise servani */
-    z-index: 20;                        /* Jääb sisu peale, aga päise (.header_taust) alla */
-    width: 220px;
-    background-image: url("pildid/kivim.jpg");
-    background-repeat: repeat;
-    background-position: top left;
-    background-size: 100px 100px;
-    image-rendering: pixelated;
-    border-right: 4px solid #2b2b2b;
-    padding: 30px 20px;
-    flex-shrink: 0;                     /* Hoiab külgriba laiuse alati kindlalt 220px peal */
-    margin-left: -220px;                /* Nihutab külgriba täpselt oma laiuse võrra vasakule ekraanilt välja (peitu) */
-    transition: margin-left 0.3s ease-in-out; /* Teeb menüü välja libisemise sujuvaks (kestab 0.3 sekundit) */
-}
-
-/* Kui JavaScript lisab elemendile klassi 'active', muutub vasak nihe 0-ks ja menüü libiseb nähtavale */
-.kylgriba.active {
-    margin-left: 0;
-}
-
-.kylgriba ul {
-    list-style-type: none;              /* Eemaldab nimekirja eest täpikesed */
-    display: flex;
-    flex-direction: column;             /* Laob menüülingid üksteise alla */
-    align-items: center;
-    gap: 30px;
-}
-
-.kylgriba li {
-    width: 100%;
-    text-align: center;
-}
-
-.kylg_link {
-    display: block;
-    width: 100%;
-    color: var(--white);
-    text-decoration: none;
-    font-size: 18px;
-    padding: 12px 10px;
-    word-break: break-word;             /* Murrab liiga pika sõna poolitusega uuele reale, et see ei läheks nupust välja */
-    background: url("pildid/nupp.png") no-repeat center / 100% 100%;
-    cursor: pointer;
-    border: none;
-}
-
-.kylg_link:hover {
-    filter: brightness(1.1);
-}
-
-
-/* ====================================================================================
    5. SISUALA, PEALKIRJAD JA SILDI KAARDID
    ================================================================================ */
 
@@ -370,43 +245,14 @@ h2 {
 
 /* @media reeglid rakenduvad siis, kui ekraani laius on 769px–1100px ja rõhtpaigutus */
 @media screen and (max-width: 1100px) and (min-width: 769px) and (orientation: landscape) {
-    .header_taust {
-        flex-direction: column;         /* Laob päises logo ja nupud üksteise alla, et nad mahuksid ära */
-        height: auto;                   /* Lubab päisel kõrgemaks venida vastavalt sisule */
-        padding: 15px 20px;
-        gap: 15px;
-        background-repeat: repeat;
-    }
 
     body {
         padding-top: 190px;             /* Suurendab ülemist vahet, kui päis muutub kahekorruseliseks */
     }
 
-    .kylgriba {
-        top: 190px;                     /* Nihutab külgriba alguse kahekordse päise alla */
-        height: calc(100vh - 190px);
-    }
-
     h1,
     h2 {
         scroll-margin-top: 205px;        /* Hoia ankur-lingi sihtpunktid kõrgema päise alt nähtaval */
-    }
-
-    .nav-ala {
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .link {
-        width: 90vw;                    /* 90vw = 90% ekraani laiusest (Viewport Width) */
-        max-width: var(--button-width);
-        font-size: 16px;
-    }
-
-    .kylg_link {
-        font-size: 14px;
-        word-break: normal;             /* Keelab sõnade keskelt poolitamise */
-        overflow-wrap: normal;
     }
 
     .nupp {
@@ -418,49 +264,9 @@ h2 {
 
 /* Rakendub telefonidele (laius kuni 768px) või püstiasendis (portrait) ekraanidele */
 @media (max-width: 768px), (orientation: portrait) {
-    
-    .sammas { width: 12%; }
-    .parem { width: 88%; }
-    .riba { height: 48px; }
-    .sisu { padding: 12px; }
-    .tekst { padding: 16px; }
 
     body {
         padding-top: var(--mobile-header-height); /* Kohandab ülemise vahe mobiilipäise kõrgusega */
-    }
-
-    .header_taust {
-        height: var(--mobile-header-height);
-        padding: 10px 12px;
-        gap: 12px;
-    }
-
-    .logo {
-        height: 44px;
-        width: 44px;
-    }
-
-    .nav-ala {
-        gap: 8px;
-        flex-wrap: nowrap;
-    }
-
-    .link {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    .kylgriba {
-        top: var(--mobile-header-height); /* Hoia külgriba mobiilipäise all */
-        height: calc(100vh - var(--mobile-header-height));
-        width: 140px;                   /* Teeb külgriba telefonis kitsamaks */
-        margin-left: -140px;            /* Peidab kitsama külgriba täpselt oma laiuse võrra vasakule */
-        padding: 10px 8px;
-    }
-
-    .kylg_link {
-        font-size: 14px;                
-        padding: 12px 6px;
     }
 
     h1,

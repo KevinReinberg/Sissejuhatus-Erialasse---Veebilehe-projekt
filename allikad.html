@@ -6,15 +6,36 @@
     <title>Allikad</title>
     <link rel="icon" type="image/x-icon" href="vaheleht_2/pildid/ikoon.png">
     <link rel="stylesheet" href="pealeht.css">
+    <link rel="stylesheet" href="kylgriba.css">
 </head>
 <body>
-    <header>
-        <h1>Siin on meie lehtede <b>Allikad</b></h1>
+    <header class="header_taust">
+        <!-- Logo plokk, millele JavaScript lisab klikkimisel külgriba avamise/sulgemise funktsiooni (id="menüü_nupp") -->
+        <div class="logo" id="menüü_nupp"> </div>
+        <nav class="nav-ala">
+            <!-- "../" viitab ühe kausta võrra ülespoole liikumisele -->
+            <a class="link nupp" href="pealeht.html">Koduleht</a>
+            <a class="link nupp" href="vaheleht_2/vaheleht2.html">Vahemaa Kalkulaator</a>
+            <a class="link nupp" href="vaheleht.1.html">Dark Triad Opening</a>            
+        </nav>
     </header>
+
+    <!-- Peidetav külgriba (id="kylgriba" abil muudab JavaScript selle nähtavaks) -->
+    <aside id="kylgriba" class="kylgriba">
+        <nav>
+            <ul>
+            <!-- Ankur-lingid (#nimi): viivad vajutades otse samal lehel asuva vastava id-ga pealkirjani -->
+                <li><a class="kylg_link nupp" href="#loomine">Veebileht</a></li>
+                <li><a class="kylg_link nupp" href="#triad">Dark Triad Opening</a></li>
+                <li><a class="kylg_link nupp" href="#vahemaa">Vahemaa Kalkulaator</a></li>
+                <li><a class="kylg_link nupp" href="#pildid">Pildid</a></li>
+            </ul>
+        </nav>
+    </aside>
 
     <main class="allikate-sisu">
         <div class="allika-plokk">
-            <a href="pealeht.html" class="leht">Pealeht:</a>
+            <a href="pealeht.html" class="leht" id="loomine">Veebilehe kujutus ja loomine:</a>
             <p class="link"><a href="https://fonts.cdnfonts.com/css/minecraft-3" target="_blank">Minecrafti font ja kujundus</a></p>
             <p class="link"><a href="https://www.w3schools.com/html/default.asp" target="_blank">HTML abi</a></p>
             <p class="link"><a href="https://www.w3schools.com/css/default.asp" target="_blank">CSS abi</a></p>
@@ -24,17 +45,17 @@
         </div>
 
         <div class="allika-plokk">
-            <a href="patrick.html" class="leht">Dark Triad Opening:</a>
+            <a href="vaheleht.1.html" class="leht" id="triad">Dark Triad Opening:</a>
             <p class="link"><a href="#" target="_blank">Materjali kirjeldus</a></p>
         </div>
 
         <div class="allika-plokk">
-            <a href="vaheleht_2/vaheleht2.html" class="leht">Vahemaa Kalkulaator:</a>
+            <a href="vaheleht_2/vaheleht2.html" class="leht" id="vahemaa">Vahemaa Kalkulaator:</a>
             <p class="link"><a href="#" target="_blank">Materjali kirjeldus</a></p>
         </div>
 
         <div class="allika-plokk">
-            <a href="vaheleht_2/vaheleht2.html" class="leht">Pildid:</a>
+            <a href="vaheleht_2/vaheleht2.html" class="leht" id="pildid">Pildid:</a>
             <p class="link"><a href="https://minecraft.wiki/w/Grass_Block" target="_blank">Ikoon</a></p>
             <p class="link"><a href="https://www.pinterest.com/pin/13018286402736466/" target="_blank">Kivi</a></p>
             <p class="link"><a href="https://www.pinterest.com/pin/minecraft-inspired-gray-texture-wall--252975704061939111/" target="_blank">Kivitellised</a></p>
@@ -52,5 +73,7 @@
             <a href="https://ut.ee" target="_blank">UT.EE</a>
         </nav>
     </footer>
+
+    <script src="kylgriba.js"></script>
 </body>
 </html>
