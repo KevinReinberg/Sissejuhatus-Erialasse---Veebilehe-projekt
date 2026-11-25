@@ -48,7 +48,7 @@ html {
     color: var(--text-color);
     min-height: 100%;
     /* Lühikirje: taustapilt | kordub igas suunas | algab nurgast 0 0 | ühe ruudu suurus 128x128px */
-    background: url('pildid/tammekoor.png') repeat 0 0 / 128px 128px;
+    background: url('../pildid/tammekoor.png') repeat 0 0 / 128px 128px;
     image-rendering: pixelated;         /* Hoiab pikslid teravana ega lase brauseril pilti uduseks siluda */
     scroll-behavior: smooth;            /* Paneb lehe sujuvalt kerima, kui vajutad ankur-lingile (nt #selgitus) */
 }
@@ -103,7 +103,7 @@ p {
     font-size: var(--standart-font-size);
     color: var(--heading-color);
     /* Venitab nupu taustapildi täpselt 100% laiuseks ja 100% kõrguseks vastavalt nupu suurusele */
-    background: url("pildid/nupp.png") no-repeat center / 100% 100%;
+    background: url("../pildid/nupp.png") no-repeat center / 100% 100%;
     cursor: pointer;                    /* Muudab hiirekursori nupu kohal käekujuliseks */
 }
 
@@ -125,7 +125,7 @@ p {
     font-size: var(--standart-font-size);
     color: var(--white);
     text-align: center;
-    background-image: url("pildid/silt.png");
+    background-image: url("../pildid/silt.png");
     background-repeat: repeat;
     background-position: top left;
     background-size: auto;
@@ -193,7 +193,7 @@ h2 {
     max-width: 640px;                   /* Täpselt 5x128px taustaruudustikust, et ei veniks laial ekraanil */
     margin: 0 auto 24px auto;           /* Keskele joondatud, allpool on 24px vahe järgmise elemendiga */
     padding: 24px;
-    background-image: url("pildid/silt.png");
+    background-image: url("../pildid/silt.png");
     background-repeat: repeat;
     background-position: top left;
     background-size: auto;

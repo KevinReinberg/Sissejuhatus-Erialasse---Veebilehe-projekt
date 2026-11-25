@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Minecraft";
-    src: url("minecraft.ttf");
+    src: url("../minecraft.ttf");
     font-weight: normal;
     font-style: normal;
 }
@@ -21,7 +21,7 @@ body {
 .leht {
     display: flex;
     min-height: 100vh;
-    background-image: url("vaheleht_2/pildid/cobblestone.png");
+    background-image: url("../pildid/cobblestone.png");
     background-repeat: repeat;
     background-size: 160px 160px;
     background-position: left top;
@@ -42,7 +42,7 @@ body {
 }
 
 .sisu {
-    background-image: url("vaheleht_2/pildid/brick.png");
+    background-image: url("../pildid/brick.png");
     background-repeat: repeat;
     background-size: 160px 160px;
     padding: 32px;
@@ -100,7 +100,7 @@ a:hover {
     font-size: 18px;
     color: #ffffff;
     text-shadow: 2px 2px 0px #1e1e1e;
-    background: url("vaheleht_2/pildid/nupp.png") no-repeat center / 100% 100%;
+    background: url("../pildid/nupp.png") no-repeat center / 100% 100%;
     image-rendering: pixelated;
     cursor: pointer;
 }

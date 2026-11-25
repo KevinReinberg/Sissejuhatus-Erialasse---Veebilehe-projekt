@@ -1,13 +1,13 @@
 /* Ootab, kuni kogu HTML-dokument on täielikult laetud, enne kui skript käivitub */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
 
     // ================================================================================
     // 1. OTSING AINULT PEALEHE ÕPETUSTE SEAS
     // ================================================================================
 
     /* Leiab otsingu sisendvälja ja kõik õpetuste nimekirja elemendid */
-    const otsinguSisend = document.getElementById('otsingu-sisend');
-    const tutorialiElemendid = document.querySelectorAll('.tutorial ul li');
+    const otsinguSisend = document.getElementById("otsingu-sisend");
+    const tutorialiElemendid = document.querySelectorAll(".tutorial ul li");
 
     /* Kontrollib, kas otsinguväli ja õpetused on lehel olemas */
     if (otsinguSisend && tutorialiElemendid.length > 0) {
@@ -18,15 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const nimekiri = tutorialiElemendid[0].parentElement;
 
             /* Kui otsingukast on tühi, taastab kõikide õpetuste nähtavuse */
-            if (otsingusõna === '') {
+            if (otsingusõna === "") {
                 tutorialiElemendid.forEach(li => {
-                    li.style.display = '';
+                    li.style.display = "";
                 });
                 return;
             }
 
             /* Eelistab sõna algust lühikese päringu korral (nt "k" eelistab sõna algust "kalkulaator") */
-            const algabSõnaRegex = new RegExp(`(^|\\s)${otsingusõna.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`);
+            const algabSõnaRegex = new RegExp(`(^|\\s)${otsingusõna.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`);
 
             const sobivad = [];
             tutorialiElemendid.forEach(li => {
@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 /* Peidab elemendi, kui otsingusõna ei leidu pealkirjas */
                 if (!sisaldab) {
-                    li.style.display = 'none';
+                    li.style.display = "none";
                     return;
                 }
 
                 /* Näitab sobivat elementi */
-                li.style.display = '';
+                li.style.display = "";
 
                 /* Skoor: 0 = pealkiri algab otsinguga, 1 = mõni sõna algab otsinguga, 2 = sisaldub sõna sees */
                 let skoor = 2;
@@ -55,20 +55,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
             /* Sorteerib sobivad elemendid skoori järgi, et eelistatud tulemus oleks esimene */
             sobivad
-                .sort((a, b) => a.skoor - b.skoor || a.pealkiri.localeCompare(b.pealkiri, 'et'))
+                .sort((a, b) => a.skoor - b.skoor || a.pealkiri.localeCompare(b.pealkiri, "et"))
                 .forEach(item => nimekiri.appendChild(item.li));
         }
 
         /* Käivitab filtreerimise iga kord, kui kasutaja otsinguväljale kirjutab või kustutab */
-        otsinguSisend.addEventListener('input', filtreeriTutorialid);
+        otsinguSisend.addEventListener("input", filtreeriTutorialid);
 
         /* Kui kasutaja vajutab otsinguväljal Enter-klahvi, avab esimese nähtava/sobiva õpetuse */
-        otsinguSisend.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
+        otsinguSisend.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
                 event.preventDefault();
 
                 /* Kui otsingukast on tühi (või sisaldab vaid tühikuid), ära tee midagi */
-                if (otsinguSisend.value.trim() === '') {
+                if (otsinguSisend.value.trim() === "") {
                     return;
                 }
 
@@ -76,15 +76,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 filtreeriTutorialid();
 
                 /* Võtab elemendid uuendatud DOM-järjekorras, et esimene nähtav oleks tõesti esimene tulemus */
-                const hetkeElemendid = Array.from(tutorialiElemendid[0].parentElement.querySelectorAll('li'));
+                const hetkeElemendid = Array.from(tutorialiElemendid[0].parentElement.querySelectorAll("li"));
                 const esimeneNähtavLink = hetkeElemendid
-                    .filter(li => li.style.display !== 'none')
-                    .map(li => li.querySelector('a[href]'))
-                    .find(link => link && link.getAttribute('href'));
+                    .filter(li => li.style.display !== "none")
+                    .map(li => li.querySelector("a[href]"))
+                    .find(link => link && link.getAttribute("href"));
 
                 /* Suunab brauseri leitud õpetuse lehele */
                 if (esimeneNähtavLink) {
-                    window.location.href = esimeneNähtavLink.getAttribute('href');
+                    window.location.href = esimeneNähtavLink.getAttribute("href");
                 }
             }
         });
@@ -96,19 +96,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // ================================================================================
 
     /* Leiab HTML-ist nimekirja, kuhu viimased commit'id kuvatakse */
-    const commitideKast = document.getElementById('github-commitid');
+    const commitideKast = document.getElementById("github-commitid");
 
     if (commitideKast) {
         /* GitHubi API aadress 3 viimase commit'i küsimiseks */
-        const apiURL = 'https://api.github.com/repos/KevinReinberg/Sissejuhatus-Erialasse---Veebilehe-projekt/commits?per_page=3';
+        const apiURL = "https://api.github.com/repos/KevinReinberg/Sissejuhatus-Erialasse---Veebilehe-projekt/commits?per_page=3";
 
         /* Vahemälu võti ja kestus (10 minutit), et vältida 403 rate-limit viga */
-        const cacheKey = 'github_commits_cache_v1';
+        const cacheKey = "github_commits_cache_v1";
         const cacheDurationMs = 10 * 60 * 1000;
 
         /* Loob commit'ide andmetest HTML-nupud ja lisab need lehele */
         function renderCommits(commits) {
-            commitideKast.innerHTML = '';
+            commitideKast.innerHTML = "";
 
             commits.slice(0, 3).forEach(commitObj => {
                 const sõnum = commitObj.commit.message;
@@ -116,14 +116,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 const commitUrl = commitObj.html_url;
 
                 /* Lühendab pika commit'i sõnumi, et see mahuks nupu sisse */
-                const lühikeSõnum = sõnum.length > 18 ? sõnum.substring(0, 15) + '...' : sõnum;
+                const lühikeSõnum = sõnum.length > 18 ? sõnum.substring(0, 15) + "..." : sõnum;
 
-                const li = document.createElement('li');
-                li.className = 'nupp';
+                const li = document.createElement("li");
+                li.className = "nupp";
 
-                const a = document.createElement('a');
+                const a = document.createElement("a");
                 a.href = commitUrl;
-                a.target = '_blank';
+                a.target = "_blank";
                 a.textContent = `${lühikeSõnum} (${autor})`;
 
                 li.appendChild(a);
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         /* Kuvab veateate, kui andmete laadimine ebaõnnestub */
         function showError() {
-            commitideKast.innerHTML = '<li class="nupp laeb">Laadimine ebaonnestus</li>';
+            commitideKast.innerHTML = "<li class=\"nupp laeb\">Laadimine ebaonnestus</li>";
         }
 
         /* 1. Kontrollib, kas brauseri localStorage'is on juba kehtiv vahemälu */
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
         /* 2. Teeb päringu GitHubi API-sse, kui vahemälu puudub või on aegunud */
         fetch(apiURL, {
             headers: {
-                'Accept': 'application/vnd.github+json'
+                "Accept": "application/vnd.github+json"
             }
         })
             .then(response => {

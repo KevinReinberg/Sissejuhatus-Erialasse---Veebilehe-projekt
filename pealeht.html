@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Dark Triad</title>
-    <link rel="icon" type="image/x-icon" href="vaheleht_2/pildid/ikoon.png">
+    <!-- Veebilehe ikoon brauseri vahelehel -->
+    <link rel="icon" type="image/x-icon" href="pildid/ikoon.png">
+    <!-- Pealehe stiilifail -->
     <link rel="stylesheet" href="pealeht.css">
 </head>
 <body>
@@ -15,30 +17,29 @@
 
     <!-- Peamine sisu -->
     <main>
-        <!-- Otsinguriba -->
+        <!-- Otsinguriba õpetuste filtreerimiseks -->
         <div class="otsing">
             <input type="text" id="otsingu-sisend" class="nupp" placeholder="Otsi tutorialit siin: ">
         </div>
 
         <!-- Õpetuste ehk tutorialite nimekiri -->
-        <div class="tutorial">  
+        <div class="tutorial">
             <ul>
-                <li><a href="vaheleht.1.html" class="nupp"><h2>Dark Triad Opening</h2></a></li>
+                <li><a href="vaheleht_1/vaheleht.1.html" class="nupp"><h2>Dark Triad Opening</h2></a></li>
                 <li><a href="vaheleht_2/vaheleht2.html" class="nupp"><h2>Vahemaa Kalkulaator</h2></a></li>
             </ul>
         </div>
 
-        <!-- GitHubi viimased muudatused -->
+        <!-- GitHubi viimased muudatused (täidetakse dünaamiliselt pealeht.js kaudu) -->
         <div class="muudatused">
             <a class="nupp" href="https://github.com/KevinReinberg/Sissejuhatus-Erialasse---Veebilehe-projekt/commits/main" target="_blank">Viimased muudatused:</a>
             <ul id="github-commitid">
                 <li class="nupp laeb">Laen viimaseid muudatusi...</li>
             </ul>
         </div>
-
     </main>
-    
-    <!-- Allikate nupp -->
+
+    <!-- Allikate lehe nupp -->
     <div class="allikad">
         <a class="nupp" href="allikad.html">Allikad</a>
     </div>
@@ -52,6 +53,7 @@
         </nav>
     </footer>
 
+    <!-- Pealehe otsingu- ja GitHubi commitide skript -->
     <script src="pealeht.js"></script>
 </body>
 </html>

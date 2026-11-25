@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allikad</title>
+    <!-- Veebilehe ikoon (favicon) brauseri vahelehel -->
     <link rel="icon" type="image/x-icon" href="vaheleht_2/pildid/ikoon.png">
+    <!-- Üldine stiilifail ja päise/külgriba stiilifail -->
     <link rel="stylesheet" href="pealeht.css">
     <link rel="stylesheet" href="kylgriba.css">
 </head>
 <body>
+    <!-- Ühine päis ja navigeerimisriba -->
     <header class="header_taust">
         <!-- Logo plokk, millele JavaScript lisab klikkimisel külgriba avamise/sulgemise funktsiooni (id="menüü_nupp") -->
-        <div class="logo" id="menüü_nupp"> </div>
+        <div class="logo" id="menüü_nupp"></div>
         <nav class="nav-ala">
-            <!-- "../" viitab ühe kausta võrra ülespoole liikumisele -->
             <a class="link nupp" href="pealeht.html">Koduleht</a>
             <a class="link nupp" href="vaheleht_2/vaheleht2.html">Vahemaa Kalkulaator</a>
-            <a class="link nupp" href="vaheleht.1.html">Dark Triad Opening</a>            
+            <a class="link nupp" href="vaheleht_1/vaheleht.1.html">Dark Triad Opening</a>
         </nav>
     </header>
 
@@ -24,7 +26,7 @@
     <aside id="kylgriba" class="kylgriba">
         <nav>
             <ul>
-            <!-- Ankur-lingid (#nimi): viivad vajutades otse samal lehel asuva vastava id-ga pealkirjani -->
+                <!-- Ankur-lingid (#nimi): viivad vajutades otse samal lehel asuva vastava id-ga pealkirjani -->
                 <li><a class="kylg_link nupp" href="#loomine">Veebileht</a></li>
                 <li><a class="kylg_link nupp" href="#triad">Dark Triad Opening</a></li>
                 <li><a class="kylg_link nupp" href="#vahemaa">Vahemaa Kalkulaator</a></li>
@@ -33,7 +35,9 @@
         </nav>
     </aside>
 
+    <!-- Allikate loetelu põhiosa -->
     <main class="allikate-sisu">
+        <!-- Veebilehe loomise ja kujundusega seotud allikad -->
         <div class="allika-plokk">
             <a href="pealeht.html" class="leht" id="loomine">Veebilehe kujutus ja loomine:</a>
             <p class="link"><a href="https://fonts.cdnfonts.com/css/minecraft-3" target="_blank">Minecrafti font ja kujundus</a></p>
@@ -44,16 +48,19 @@
             <p class="link"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">GitHubi API ja fetch-päringute õppematerjal</a></p>
         </div>
 
+        <!-- Dark Triad Opening vahelehe allikad -->
         <div class="allika-plokk">
             <a href="vaheleht.1.html" class="leht" id="triad">Dark Triad Opening:</a>
             <p class="link"><a href="https://www.apollo.ee/en/the-48-laws-of-power.html" target="_blank">48 Laws Of Power</a></p>
         </div>
 
+        <!-- Vahemaa Kalkulaatori vahelehe allikad -->
         <div class="allika-plokk">
             <a href="vaheleht_2/vaheleht2.html" class="leht" id="vahemaa">Vahemaa Kalkulaator:</a>
             <p class="link"><a href="https://minecraft.fandom.com/wiki/Tutorials/Nether_hub#More_precise_method" target="_blank">Minecraft Nether liikumine</a></p>
         </div>
 
+        <!-- Kasutatud piltide allikad -->
         <div class="allika-plokk">
             <a href="vaheleht_2/vaheleht2.html" class="leht" id="pildid">Pildid:</a>
             <p class="link"><a href="https://minecraft.wiki/w/Grass_Block" target="_blank">Ikoon</a></p>
@@ -66,6 +73,7 @@
         </div>
     </main>
 
+    <!-- Lehe jalus -->
     <footer>
         <nav class="nav_lingid">
             <a href="https://github.com/KevinReinberg/Sissejuhatus-Erialasse---Veebilehe-projekt">GitHub</a>
@@ -74,6 +82,7 @@
         </nav>
     </footer>
 
+    <!-- Külgriba avamise ja sulgemise skript -->
     <script src="kylgriba.js"></script>
 </body>
 </html>

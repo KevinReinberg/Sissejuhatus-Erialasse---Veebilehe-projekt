@@ -1,21 +1,19 @@
 /* ====================================================================================
    1. ROOT-MUUTUJAD, LÄHTESTAMINE (RESET) JA ÜLDSTIILID
-   ================================================================================    
-   See sektsioon määrab lehe üldised baasväärtused, fondid, värvimuutujad ja nullib 
+   ================================================================================
+   See sektsioon määrab lehe üldised baasväärtused, fondid, värvimuutujad ja nullib
    brauseri vaikimisi varud (margin/padding).
    ================================================================================ */
 
-/* Imporditakse Minecrafti stiilis kirjatüüp välisallikast */
+/* Imporditakse Minecrafti stiilis kirjatüüp kohalikust fondifailist */
 @font-face {
     font-family: "Minecraft";
     src: url("minecraft.ttf");
     font-weight: normal;
     font-style: normal;
 }
-/* ====================================================================================
-   1. ROOT-MUUTUJAD, LÄHTESTAMINE (RESET) JA ÜLDSTIILID
-   ================================================================================ */
 
+/* CSS-muutujad kogu veebilehe värvide ja mõõtude jaoks */
 :root {
     --text-color: #dddddd;          /* Põhiteksti hele hall värv */
     --heading-color: #2da32d;       /* Pealkirjade ja nuppude roheline värv */
@@ -24,7 +22,7 @@
     --white: #ffffff;               /* Puhas valge värv tekstidele */
     --shadow-color: #1e1e1e;        /* Tekstivarjude tume toon */
 
-    --default-font: 'Minecraft', sans-serif;
+    --default-font: "Minecraft", sans-serif;
     --standart-gap: 10px;
     --standart-font-size: 18px;
     --top-offset: 170px;
@@ -34,6 +32,7 @@
     --mobile-header-height: 74px;   /* Kitsama ekraani päise kõrgus */
 }
 
+/* Üldine nullimine ja kastikujundus */
 * {
     margin: 0;
     padding: 0;
@@ -41,13 +40,15 @@
     text-shadow: 2px 2px 0px var(--shadow-color);
 }
 
+/* Kogu dokumendi taust ja baasfont */
 html {
     font-family: var(--default-font);
     color: var(--text-color);
-    background: url('vaheleht_2/pildid/kivi.jpg') repeat 0 0 / 128px 128px;
+    background: url("pildid/kivi.jpg") repeat 0 0 / 128px 128px;
     image-rendering: pixelated;
 }
 
+/* Vertikaalne paigutus, mis hoiab jaluse allservas */
 body {
     min-height: 100vh;
     display: flex;
@@ -66,6 +67,7 @@ a {
    2. KORDUVATE ELEMENTIDE VORMISTUS (NUPUD)
    ================================================================================ */
 
+/* Standardne Minecrafti stiilis nupp */
 .nupp {
     display: flex;
     align-items: center;
@@ -75,10 +77,11 @@ a {
     border: none;
     font-size: var(--standart-font-size);
     color: var(--heading-color);
-    background: url('vaheleht_2/pildid/nupp.png') no-repeat center / 100% 100%;
+    background: url("pildid/nupp.png") no-repeat center / 100% 100%;
     cursor: pointer;
 }
 
+/* Kerge heleduse tõus hiirega nupu kohal liikudes */
 .nupp:hover {
     filter: brightness(1.1);
 }
@@ -88,6 +91,7 @@ a {
    3. PEALEHE PÄIS (pealeht.html)
    ================================================================================ */
 
+/* Pealehe murutaustaga päis (ei rakendu .header_taust päisele) */
 header:not(.header_taust) {
     display: flex;
     align-items: center;
@@ -95,7 +99,7 @@ header:not(.header_taust) {
     min-height: 140px;
     padding: 20px;
     border-bottom: 4px solid #2b2b2b;
-    background: url('vaheleht_2/pildid/muru.png') repeat-x 0 0 / auto 100%;
+    background: url("pildid/muru.png") repeat-x 0 0 / auto 100%;
 }
 
 h1 {
@@ -113,6 +117,7 @@ b {
    5. ALLIKATE LEHE SISU (allikad.html)
    ================================================================================ */
 
+/* Allikate loetelu põhikonteiner */
 .allikate-sisu {
     margin-top: var(--header-height);   /* Jätab ruumi fikseeritud päisele */
     line-height: 1.6;
@@ -123,12 +128,14 @@ b {
     max-width: 900px;
 }
 
+/* Ühe teema allikate grupp */
 .allika-plokk {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
+/* Teema pealkiri/ankur-link */
 .leht {
     display: inline-block;
     width: fit-content;
@@ -142,6 +149,7 @@ b {
     filter: brightness(1.15);
 }
 
+/* Individuaalsed allikaread */
 .allika-plokk .link {
     padding-left: 16px;
     font-size: var(--standart-font-size);
@@ -165,6 +173,7 @@ b {
    6. PEALEHE SISU JA PAIGUTUS (pealeht.html)
    ================================================================================ */
 
+/* Pealehe kolm peamist plokki samal vertikaalsel joonel */
 .tutorial,
 .otsing input,
 .muudatused {
@@ -172,6 +181,7 @@ b {
     top: var(--top-offset);
 }
 
+/* Otsingu sisendväli paremal servas */
 .otsing input {
     right: 20px;
     padding-left: 10px;
@@ -187,6 +197,7 @@ b {
     font-size: var(--standart-font-size);
 }
 
+/* Õpetuste nimekiri vasakul servas */
 .tutorial {
     left: 20px;
 }
@@ -200,6 +211,7 @@ b {
     list-style: none;
 }
 
+/* Keskel asuv viimaste muudatuste plokk */
 .muudatused {
     left: 50%;
     transform: translateX(-50%);
@@ -215,6 +227,7 @@ b {
     padding: 0 15px;
 }
 
+/* Pikemate commit-sõnumite kärpimine kolmikpunktiga, et need nupust välja ei ulatuks */
 .muudatused li.nupp a {
     color: var(--white);
     width: 100%;
@@ -228,11 +241,13 @@ b {
     padding: 0 15px;
 }
 
+/* Laadimis- ja veateate stiil muudatuste nimekirjas */
 .muudatused li.nupp.laeb {
     color: #f2f2f2;
     font-style: italic;
 }
 
+/* Allikate nupp vasakus allnurgas */
 .allikad {
     position: absolute;
     bottom: 20px;
@@ -245,6 +260,7 @@ b {
    7. JALUS (FOOTER)
    ================================================================================ */
 
+/* Fikseeritud jalus paremas allnurgas */
 footer {
     position: fixed;
     bottom: 20px;
@@ -269,6 +285,8 @@ footer a:hover {
 /* ====================================================================================
    8. RESPONSIIVNE DISAIN (MOBIIL JA KITSAD EKRAANID)
    ================================================================================ */
+
+/* Kitsamatel ekraanidel läheb paigutus absoluutselt positsioneeritult üle voogavaks */
 @media screen and (max-width: 1100px) {
     header:not(.header_taust) {
         flex-direction: column;
